@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    // Formatters
+    "esbenp.prettier-vscode",
+    "HookyQR.beautify",
+    "mrmlnc.vscode-attrs-sorter",
+    // Others
+    "firsttris.vscode-jest-runner"
+  ]
+}

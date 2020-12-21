@@ -1,0 +1,100 @@
+{
+  "name": "thunder-platform",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "nx": "nx",
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "lint": "nx workspace-lint && nx lint",
+    "e2e": "nx e2e",
+    "affected:apps": "nx affected:apps",
+    "affected:libs": "nx affected:libs",
+    "affected:build": "nx affected:build",
+    "affected:e2e": "nx affected:e2e",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "affected:dep-graph": "nx affected:dep-graph",
+    "affected": "nx affected",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "nx migrate latest",
+    "workspace-generator": "nx workspace-generator",
+    "dep-graph": "nx dep-graph",
+    "help": "nx help",
+    "commit": "git-cz",
+    "preinstall": "node ./scripts/preinstall.js",
+    "postinstall": "node ./scripts/postinstall.js && ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+  },
+  "dependencies": {
+    "@angular/animations": "11.0.5",
+    "@angular/common": "11.0.5",
+    "@angular/compiler": "11.0.5",
+    "@angular/core": "11.0.5",
+    "@angular/forms": "11.0.5",
+    "@angular/platform-browser": "11.0.5",
+    "@angular/platform-browser-dynamic": "11.0.5",
+    "@angular/router": "11.0.5",
+    "rxjs": "6.6.3",
+    "tslib": "2.0.3",
+    "zone.js": "0.11.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.1100.5",
+    "@angular-eslint/eslint-plugin": "0.8.0-beta.6",
+    "@angular-eslint/eslint-plugin-template": "0.8.0-beta.6",
+    "@angular-eslint/template-parser": "0.8.0-beta.6",
+    "@angular/compiler-cli": "11.0.5",
+    "@angular/language-service": "11.0.5",
+    "@nrwl/angular": "11.0.15",
+    "@nrwl/cli": "11.0.15",
+    "@nrwl/cypress": "11.0.15",
+    "@nrwl/eslint-plugin-nx": "11.0.15",
+    "@nrwl/jest": "11.0.15",
+    "@nrwl/nx-cloud": "10.1.10",
+    "@nrwl/tao": "11.0.15",
+    "@nrwl/workspace": "11.0.15",
+    "@thunder-tools/prettier-plugin-formatter": "1.1.1",
+    "@types/jest": "26.0.19",
+    "@types/node": "14.14.14",
+    "@typescript-eslint/eslint-plugin": "4.10.0",
+    "@typescript-eslint/parser": "4.10.0",
+    "codelyzer": "6.0.1",
+    "commitizen": "4.2.2",
+    "conventional-changelog-cli": "2.1.1",
+    "cypress": "6.1.0",
+    "cz-customizable": "6.3.0",
+    "dotenv": "8.2.0",
+    "eslint": "7.16.0",
+    "eslint-config-prettier": "7.1.0",
+    "eslint-plugin-cypress": "2.11.2",
+    "husky": "4.3.6",
+    "jest": "26.6.3",
+    "jest-preset-angular": "8.3.2",
+    "lint-staged": "10.5.3",
+    "prettier": "2.2.1",
+    "pretty-quick": "3.1.0",
+    "ts-jest": "26.4.4",
+    "ts-node": "9.1.1",
+    "typescript": "~4.0.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,md,scss}": [
+      "pretty-quick --staged",
+      "git add -f"
+    ],
+    "*.html": [
+      "node ./scripts/html-formatter.js --staged",
+      "git add -f"
+    ]
+  },
+  "importSort": {
+    ".js,.jsx,.ts,.tsx": {
+      "parser": "typescript",
+      "style": "eslint"
+    }
+  }
+}

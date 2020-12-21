@@ -1,0 +1,36 @@
+{
+  "npmScope": "thunder-platform",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "accessToken": "NjM1ZjFkYjMtOGU4Mi00YjgzLTkxZjEtZmRkYTdkMTA5ZTQ1fHJlYWQtd3JpdGU=",
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
+      }
+    }
+  },
+  "projects": {
+    "live-ide": {
+      "tags": []
+    },
+    "live-ide-e2e": {
+      "tags": [],
+      "implicitDependencies": ["live-ide"]
+    }
+  }
+}

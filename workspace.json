@@ -1,0 +1,130 @@
+{
+  "version": 2,
+  "projects": {
+    "live-ide": {
+      "projectType": "application",
+      "root": "apps/live-ide",
+      "sourceRoot": "apps/live-ide/src",
+      "prefix": "ide",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/live-ide",
+            "index": "apps/live-ide/src/index.html",
+            "main": "apps/live-ide/src/main.ts",
+            "polyfills": "apps/live-ide/src/polyfills.ts",
+            "tsConfig": "apps/live-ide/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/live-ide/src/favicon.ico", "apps/live-ide/src/assets"],
+            "styles": ["apps/live-ide/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/live-ide/src/environments/environment.ts",
+                  "with": "apps/live-ide/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "live-ide:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "live-ide:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "live-ide:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/live-ide/src/**/*.ts", "apps/live-ide/src/**/*.html"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/live-ide"],
+          "options": {
+            "jestConfig": "apps/live-ide/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "live-ide-e2e": {
+      "root": "apps/live-ide-e2e",
+      "sourceRoot": "apps/live-ide-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/live-ide-e2e/cypress.json",
+            "tsConfig": "apps/live-ide-e2e/tsconfig.e2e.json",
+            "devServerTarget": "live-ide:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "live-ide:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/live-ide-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "strict": true
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "live-ide"
+}

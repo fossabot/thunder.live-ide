@@ -22,7 +22,8 @@ module.exports = {
     { value: 'fix', name: 'fix: A bug fix' },
     { value: 'perf', name: 'perf: A code change that improves performance' },
     { value: 'refactor', name: 'refactor: A code change that neither fixes a bug nor adds a feature' },
-    { value: 'test', name: 'test: Adding missing tests or correcting existing tests' }
+    { value: 'test', name: 'test: Adding missing tests or correcting existing tests' },
+    { value: 'revert', name: 'revert: Revert a PR or a commit' }
   ],
 
   scopes: [

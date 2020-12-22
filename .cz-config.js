@@ -2,6 +2,16 @@ const fs = require('fs');
 const path = require('path');
 const appsDir = path.join(process.cwd(), 'apps');
 const libsDir = path.join(process.cwd(), 'libs');
+const workspaceScopes = [
+  ...fs
+    .readdirSync(appsDir, { withFileTypes: true })
+    .filter(dir => dir.isDirectory())
+    .map(dir => ({ name: dir.name, value: dir.name })),
+  ...fs
+    .readdirSync(libsDir, { withFileTypes: true })
+    .filter(dir => dir.isDirectory())
+    .map(dir => ({ name: dir.name, value: dir.name }))
+];
 
 module.exports = {
   types: [
@@ -16,8 +26,7 @@ module.exports = {
   ],
 
   scopes: [
-    ...fs.readdirSync(appsDir).map(p => ({ name: p, value: p })),
-    ...fs.readdirSync(libsDir).map(p => ({ name: p, value: p })),
+    ...workspaceScopes,
     {
       name: 'repo',
       description: 'anything related to managing the repo itself'

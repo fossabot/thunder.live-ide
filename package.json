@@ -91,6 +91,14 @@
       "git add -f"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz-config.js"
+    }
+  },
   "importSort": {
     ".js,.jsx,.ts,.tsx": {
       "parser": "typescript",

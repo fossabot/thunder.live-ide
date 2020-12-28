@@ -147,7 +147,11 @@
             "selector": ["variable", "parameter", "property"],
             "types": ["boolean"],
             "format": ["PascalCase"],
-            "prefix": ["is", "should", "has", "can", "did", "will"]
+            "prefix": ["is", "should", "has", "can", "did", "will"],
+            "filter": {
+              "regex": "^(production|readonly)$",
+              "match": false
+            }
           },
           {
             "selector": ["variable", "property", "parameter", "function", "classMethod", "objectLiteralMethod", "typeMethod"],
@@ -190,7 +194,12 @@
         // Note you must disable the base rule as it can report incorrect errors
         "no-extra-semi": "off",
         "@typescript-eslint/no-extra-semi": ["error"],
-        "@typescript-eslint/no-extraneous-class": ["error"],
+        "@typescript-eslint/no-extraneous-class": [
+          "error",
+          {
+            "allowEmpty": true
+          }
+        ],
         "@typescript-eslint/no-floating-promises": ["error"],
         "@typescript-eslint/no-for-in-array": ["error"],
         "@typescript-eslint/no-implicit-any-catch": ["error"],

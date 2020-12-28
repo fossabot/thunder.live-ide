@@ -6,6 +6,85 @@ Monorepo for all the tooling which enables ESLint to support TypeScript.
 
 Each rule was carefully reviewed. So DON'T BLAME THE STRICT RULES because they really make us have better thinkings in coding practice and review process, They are also helpful for future maintenance.
 
+### [no-else-return](https://github.com/eslint/eslint/blob/master/docs/rules/no-else-return.md)
+
+`Level: error`
+
+If an `if` block contains a return statement, the `else` block becomes unnecessary. Its contents can be placed outside of the block.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+function foo() {
+  if (x) {
+    return y;
+  } else {
+    return z;
+  }
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+function foo() {
+  if (x) {
+    return y;
+  }
+
+  return z;
+}
+```
+
+### [no-empty-character-class](https://github.com/eslint/eslint/blob/master/docs/rules/no-empty-character-class.md)
+
+`Level: error`
+
+Disallow empty character classes in regular expressions.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+/^abc[]/.test('abcdefg'); // false
+'abcdefg'.match(/^abc[]/); // null
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+/^abc/.test('abcdefg'); // true
+'abcdefg'.match(/^abc/); // ["abc"]
+
+/^abc[a-z]/.test('abcdefg'); // true
+'abcdefg'.match(/^abc[a-z]/); // ["abcd"]
+```
+
+### [no-empty-function](https://github.com/eslint/eslint/blob/master/docs/rules/no-empty-function.md)
+
+`Level: error`
+
+Disallow empty functions
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+function foo() {}
+
+const foo = function () {};
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+function foo() {
+  // do nothing.
+}
+
+const foo = function () {
+  // any clear comments.
+};
+```
+
 ### [@typescript-eslint/adjacent-overload-signatures](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/adjacent-overload-signatures.md)
 
 `Level: error`
@@ -13,7 +92,7 @@ Each rule was carefully reviewed. So DON'T BLAME THE STRICT RULES because they r
 Require that member overloads be consecutive. <br />
 Grouping overloaded members together can improve readability of the code.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 class Foo {
@@ -24,7 +103,7 @@ class Foo {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class Foo {
@@ -41,14 +120,14 @@ class Foo {
 
 Requires using `T[]` instead of `Array<T>` for arrays
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 const x: Array<string> = ['a', 'b'];
 const y: ReadonlyArray<string> = ['a', 'b'];
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 const x: string[] = ['a', 'b'];
@@ -61,7 +140,7 @@ const y: readonly string[] = ['a', 'b'];
 
 Disallows awaiting a value that is not a Thenable.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 await 'value';
@@ -70,7 +149,7 @@ const createValue = () => 'value';
 await createValue();
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 await Promise.resolve('value');
@@ -85,7 +164,7 @@ await createValue();
 
 Disallows the use of "@ts-ignore", "ts-nocheck".
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 if (false) {
@@ -94,7 +173,7 @@ if (false) {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 if (false) {
@@ -109,7 +188,7 @@ if (false) {
 
 Bans // tslint:<rule-flag> comments from being used.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 /* tslint:disable */
@@ -121,7 +200,7 @@ someCode(); // tslint:disable-line
 // tslint:disable-next-line:rule1 rule2 rule3...
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 // This is a comment that just happens to mention tslint
@@ -133,7 +212,7 @@ someCode(); // tslint:disable-line
 
 Bans String, Object, Boolean, Number, object... types from being used.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 // use lower-case primitives for consistency
@@ -155,7 +234,7 @@ const curly1: {} = 1;
 const curly2: {} = { a: 'string' };
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 // use lower-case primitives for consistency
@@ -183,7 +262,7 @@ const curly2: Record<'a', string> = { a: 'string' };
 
 Enforces one true brace style.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 function foo() {
@@ -195,7 +274,7 @@ if (foo) {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 function foo() {
@@ -219,7 +298,7 @@ DEPRECATED
 
 This style checks for any getter methods that return literal values, and requires them to be defined using fields with the readonly modifier instead.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 public get numberOfMembers() {
@@ -227,7 +306,7 @@ public get numberOfMembers() {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 public readonly numberOfMembers = 10;
@@ -239,7 +318,7 @@ public readonly numberOfMembers = 10;
 
 Disallows trailing commas.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 var foo = {
@@ -255,7 +334,7 @@ foo({
 });
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 var foo = {
@@ -277,13 +356,13 @@ foo({
 
 This rule enforces consistent spacing before and after commas in variable declarations, array literals, object literals, function parameters, and sequences. `{ "before": false, "after": true }`
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 // const scores: number[] = [1 ,2 , 3]; <-- error
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 const scores: number[] = [1, 2, 3];
@@ -295,7 +374,7 @@ const scores: number[] = [1, 2, 3];
 
 TypeScript supports defining object show keys can be flexible using an index signature. TypeScript also has a builtin type named Record to create an empty object defining only an index signature.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 interface Foo {
@@ -307,7 +386,7 @@ type Foo = {
 };
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 type Foo = Record<string, unknown>;
@@ -323,7 +402,7 @@ This rule aims to standardize the use of type assertion style across the codebas
 > - Always prefer const `x: T = { ... };` to `const x = { ... } as T`;
 > - Casting to `unknown` is allowed.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 interface IFoo {
@@ -338,7 +417,7 @@ function foo(): IFoo {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 interface IFoo {
@@ -366,7 +445,7 @@ TypeScript 3.8 added support for type-only imports. Type-only imports allow you 
 
 This rule will enforce that you cannot use `import type Foo from '...'` and `import('Foo').Foo`
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 import type { Foo } from 'Foo';
@@ -378,7 +457,7 @@ type T = import('Foo').Foo;
 const x: import('Bar') = 1;
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 import * as bar from 'Bar';
@@ -393,7 +472,7 @@ const x: bar.config = 1;
 
 In JavaScript, one can access properties using the dot notation (foo.bar) or square-bracket notation (foo["bar"]). However, the dot notation is often preferred because it is easier to read, less verbose, and works better with aggressive JavaScript minimizers.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 class X {
@@ -408,7 +487,7 @@ x.protectedProp = 2;
 x.privateProp = 2;
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class X {
@@ -431,7 +510,7 @@ Please see the documentation for more details.
 
 Require explicit accessibility modifiers on class properties and methods.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 class Animal {
@@ -454,7 +533,7 @@ class Animal {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 export class Animal {
@@ -489,7 +568,7 @@ We wish to make sure all functions have explicit return types, as opposed to onl
 
 Disallows space between the function name and the opening parenthesis.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 // fn ();
@@ -498,7 +577,7 @@ Disallows space between the function name and the opening parenthesis.
 // ();
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 fn();
@@ -512,7 +591,7 @@ fn();
 
 This rule enforces a consistent indentation style. The default style is 2 spaces.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 if (a) {
@@ -524,7 +603,7 @@ if (a) {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 if (a) {
@@ -541,7 +620,7 @@ if (a) {
 
 This rule is aimed at enforcing or eliminating variable initializations during declaration.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 class Foo {
@@ -550,7 +629,7 @@ class Foo {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class Foo {
@@ -571,7 +650,7 @@ This rule extends the base `eslint/keyword-spacing` rule. This version adds supp
 
 This rule requires an empty line after class members.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 class Foo {
@@ -580,7 +659,7 @@ class Foo {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class Foo {
@@ -596,7 +675,7 @@ class Foo {
 
 Enforces a consistent member delimiter `Semicolon` style in interfaces and type literals.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 interface Foo {
@@ -609,7 +688,7 @@ type FooBar = {
 };
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 interface Foo {
@@ -674,7 +753,7 @@ This rule aims to standardize the way class declarations, class expressions, int
 
 A good practice is to use the TypeScript's `strict` option (which implies `strictFunctionTypes`) which enables correct typechecking for function properties only (method signatures get old behavior).
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 interface T1 {
@@ -690,7 +769,7 @@ interface T3 {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 interface T1 {
@@ -713,7 +792,7 @@ This rule allows you to enforce conventions for any identifier, using granular s
 
 #### Enforce that interface names do not begin with an I
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 interface CanDoSomething {
@@ -721,7 +800,7 @@ interface CanDoSomething {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 interface ICanDoSomething {
@@ -737,7 +816,7 @@ function generic<GenericInput, GenericOutput>(param: GenericInput): GenericOutpu
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 function generic<T, R>(param: T): R {
@@ -751,7 +830,7 @@ function generic<T, R>(param: T): R {
 const paidFor: boolean = true;
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 const isPaidFor: boolean = true;
@@ -765,7 +844,7 @@ class Foo {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class Foo {
@@ -781,7 +860,7 @@ class SomeConfigs {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class SomeConfigs {
@@ -795,14 +874,14 @@ class SomeConfigs {
 
 This rule disallows Array constructors.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 Array(0, 1, 2);
 new Array(0, 1, 2);
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 const arr: number[] = [0, 1, 2];
@@ -814,7 +893,7 @@ const arr: number[] = [0, 1, 2];
 
 This rule prevents accidentally defaulting to the base Object .toString() method.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 class CustomToString {}
@@ -822,7 +901,7 @@ class CustomToString {}
 `Value: ${new CustomToString()}`;
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 class CustomToString {
@@ -839,7 +918,7 @@ class CustomToString {
 
 Using a non-null assertion (!) next to an assign or equals check (= or == or ===) creates code that is confusing as it looks similar to a not equals check (!= !==).
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 interface IFoo {
@@ -852,7 +931,7 @@ const isEqualsBar: boolean = foo.bar! == 'hello';
 const isEqualsNum: boolean = 1 + foo.num! == 2;
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 interface IFoo {
@@ -873,13 +952,13 @@ Returning the results of an expression whose type is void can be misleading. Att
 
 This rule provides automatic fixes for most common cases.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 const response = alert('Are you sure?');
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 alert('Are you sure?');
@@ -893,7 +972,7 @@ This rule is aimed to flag the use of duplicate names in class members.
 
 We also add support for TypeScript's method overload definitions.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 export class Foo {
@@ -907,7 +986,7 @@ export class Foo {
 }
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 export class Foo {
@@ -929,7 +1008,7 @@ export class Foo {
 
 This rule requires that all imports from a single module exists in a single import statement.
 
-`Bad`
+![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
 // import { merge } from 'module';
@@ -937,9 +1016,868 @@ This rule requires that all imports from a single module exists in a single impo
 // import { find } from 'module';
 ```
 
-`Good`
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
 // import { merge, find } from 'module';
 // import something from 'another-module';
+```
+
+### [@typescript-eslint/no-dynamic-delete](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-dynamic-delete.md)
+
+`Level: error`
+
+Disallow the delete operator with computed key expressions.
+
+Deleting dynamically computed keys can be dangerous and in some cases not well optimized.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```// Can be replaced with the constant equivalents, such as container.aaa
+delete container['aaa'];
+delete container['Infinity'];
+
+// Dynamic, difficult-to-reason-about lookups
+const name = 'name';
+delete container[name];
+delete container[name.toUpperCase()];
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const container: { [i: string]: number } = {
+  /* ... */
+};
+
+// Constant runtime lookups by string index
+delete container.aaa;
+
+// Constants that must be accessed by []
+delete container[7];
+delete container['-Infinity'];
+```
+
+### [@typescript-eslint/no-empty-function](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-function.md)
+
+`Level: error`
+
+Disallow empty functions
+
+### [@typescript-eslint/no-empty-interface](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-empty-interface.md)
+
+`Level: error`
+
+Disallow the declaration of empty interfaces.
+
+An empty interface is equivalent to its supertype. If the interface does not implement a supertype, then the interface is equivalent to an empty object ({}). In both cases it can be omitted.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+// an empty interface
+interface Foo {}
+
+// an interface with only one supertype (Bar === Foo)
+interface Bar extends Foo {}
+
+// an interface with an empty list of supertypes
+interface Baz {}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+// an interface with any number of members
+interface Foo {
+  name: string;
+}
+
+// same as above
+interface Bar {
+  age: number;
+}
+
+// an interface with more than one supertype
+// in this case the interface can be used as a replacement of a union type.
+interface Baz extends Foo, Bar {}
+```
+
+### [@typescript-eslint/no-explicit-any](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-explicit-any.md)
+
+`Level: error`
+
+Disallow usage of the `any` type.
+
+Using the `any` type defeats the purpose of using TypeScript. When `any` is used, all compiler type checks around that value are ignored.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const age: any = 'seventeen';
+const ages: any[] = ['seventeen'];
+function greet(): any {}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const age: number = 17;
+const ages: number[] = [17];
+function greet(): string {}
+```
+
+### [@typescript-eslint/no-extra-non-null-assertion](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extra-non-null-assertion.md)
+
+`Level: error`
+
+Disallow extra non-null assertion.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const foo: { bar: number } | null = null;
+const bar = foo!!!.bar;
+
+function foo(bar: number | undefined) {
+  const bar: number = bar!!!;
+}
+
+function foo(bar?: { n: number }) {
+  return bar!?.n;
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const foo: { bar: number } | null = null;
+const bar: number | undefined = foo?.bar;
+
+function foo(bar?: { n: number }) {
+  return bar?.n;
+}
+```
+
+### [@typescript-eslint/no-extra-parens](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extra-parens.md)
+
+`Level: error`
+
+Disallow unnecessary parentheses.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+/**
+a = (b * c);
+
+(a * b) + c;
+
+for (a in (b, c));
+
+for (a in (b));
+
+for (a of (b));
+
+typeof (a);
+
+(function(){} ? a() : b());
+*/
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+(0).toString();
+
+Object.prototype.toString.call();
+
+({}.toString.call());
+
+(function () {} ? a() : b());
+
+/^a$/.test(x);
+
+for (a of (b, c));
+
+for (a of b);
+
+for (a in (b, c));
+
+for (a in b);
+```
+
+### [@typescript-eslint/no-extra-semi](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extra-semi.md)
+
+`Level: error`
+
+Disallow unnecessary semicolons.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+/**
+var x = 5;;
+
+function foo() {
+    // code
+};
+*/
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+var x = 5;
+
+function foo() {
+  // code
+}
+```
+
+### [@typescript-eslint/no-extraneous-class](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-extraneous-class.md)
+
+`Level: error`
+
+This rule warns when a class is accidentally used as a namespace.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+class EmptyClass {}
+
+class ConstructorOnly {
+  constructor() {
+    foo();
+  }
+}
+
+// Use an object instead:
+class StaticOnly {
+  static version = 42;
+  static hello() {
+    console.log('Hello, world!');
+  }
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+class EmptyClass extends SuperClass {}
+
+class ParameterProperties {
+  constructor(public name: string) {}
+}
+
+const StaticOnly = {
+  version: 42,
+  hello() {
+    console.log('Hello, world!');
+  }
+};
+```
+
+### [@typescript-eslint/no-floating-promises](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-floating-promises.md)
+
+`Level: error`
+
+Requires Promise-like values to be handled appropriately.
+
+This rule forbids usage of Promise-like values in statements without handling their errors appropriately. Unhandled promises can cause several issues, such as improperly sequenced operations, ignored Promise rejections and more. Valid ways of handling a Promise-valued statement include `await`ing, returning, and either calling `.then()` with two arguments or `.catch()` with one argument.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const promise = new Promise((resolve, reject) => resolve('value'));
+promise;
+
+async function returnsPromise() {
+  return 'value';
+}
+returnsPromise().then(() => {});
+
+Promise.reject('value').catch();
+
+Promise.reject('value').finally();
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const promise = new Promise((resolve, reject) => resolve('value'));
+await promise;
+
+async function returnsPromise() {
+  return 'value';
+}
+returnsPromise().then(
+  () => {},
+  () => {}
+);
+
+Promise.reject('value').catch(() => {});
+
+Promise.reject('value').finally(() => {});
+```
+
+### [@typescript-eslint/no-for-in-array](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-for-in-array.md)
+
+`Level: error`
+
+This rule prohibits iterating over an array with a for-in loop.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+for (const x in [3, 4, 5]) {
+  console.log(x);
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+for (const x in { a: 3, b: 4, c: 5 }) {
+  console.log(x);
+}
+```
+
+### [@typescript-eslint/no-implicit-any-catch](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implicit-any-catch.md)
+
+`Level: error`
+
+Disallow usage of the implicit `any` type in catch clauses
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+try {
+  // ...
+} catch (e) {
+  // ...
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+try {
+  // ...
+} catch (e: unknown) {
+  // ...
+}
+```
+
+### [@typescript-eslint/no-implied-eval](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-implied-eval.md)
+
+`Level: error`
+
+Disallow the use of `eval()`-like methods
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+setTimeout('alert(`Hi!`);', 100);
+
+setInterval('alert(`Hi!`);', 100);
+
+setImmediate('alert(`Hi!`)');
+
+execScript('alert(`Hi!`)');
+
+window.setTimeout('count = 5', 10);
+
+window.setInterval('foo = bar', 10);
+
+const fn = '() = {}';
+setTimeout(fn, 100);
+
+const fn = () => {
+  return 'x = 10';
+};
+setTimeout(fn(), 100);
+
+const fn = new Function('a', 'b', 'return a + b');
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+setTimeout(function () {
+  alert('Hi!');
+}, 100);
+
+setInterval(function () {
+  alert('Hi!');
+}, 100);
+
+setImmediate(function () {
+  alert('Hi!');
+});
+
+execScript(function () {
+  alert('Hi!');
+});
+
+const fn = () => {};
+setTimeout(fn, 100);
+
+const foo = {
+  fn: function () {}
+};
+setTimeout(foo.fn, 100);
+setTimeout(foo.fn.bind(this), 100);
+
+class Foo {
+  static fn = () => {};
+}
+
+setTimeout(Foo.fn, 100);
+```
+
+### [@typescript-eslint/no-invalid-this](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-invalid-this.md)
+
+`Level: error`
+
+Disable this rule to support `typedef` rule.
+
+### [@typescript-eslint/no-inferrable-types](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-inferrable-types.md)
+
+Disallow this keywords outside of classes or class-like objects.
+
+### [@typescript-eslint/no-invalid-void-type](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-invalid-void-type.md)
+
+`Level: error`
+
+Disallows usage of `void` type outside of return types or generic type arguments. If `void` is used as return type, it shouldn’t be a part of intersection/union type with most other types.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+type PossibleValues = string | number | void;
+type MorePossibleValues = string | ((number & any) | (string | void));
+
+function logSomething(thing: void) {}
+function printArg<T = void>(arg: T) {}
+
+logAndReturn<void>(undefined);
+
+interface Interface {
+  lambda: () => void;
+  prop: void;
+}
+
+class MyClass {
+  private readonly propName: void;
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+type NoOp = () => void;
+
+function noop(): void {}
+
+let trulyUndefined = void 0;
+
+async function promiseMeSomething(): Promise<void> {}
+
+type stillVoid = void | never;
+```
+
+### [@typescript-eslint/no-loop-func](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-loop-func.md)
+
+`Level: error`
+
+Disallow Functions in Loops.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+for (var i = 10; i; i--) {
+  (function () {
+    return i;
+  })();
+}
+
+while (i) {
+  var a = function () {
+    return i;
+  };
+  a();
+}
+
+do {
+  function a() {
+    return i;
+  }
+  a();
+} while (i);
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+var a = function () {};
+
+for (var i = 10; i; i--) {
+  a();
+}
+```
+
+### [@typescript-eslint/no-loss-of-precision](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-loss-of-precision.md)
+
+`Level: error`
+
+Disallow literal numbers that lose precision.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const x = 9007199254740993;
+const x = 5123000000000000000000000000001;
+const x = 1230000000000000000000000.0;
+const x = 0.123;
+const x = 0x20000000000001;
+const x = 0x2_000000000_0001;
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const x = 12345;
+const x = 123.456;
+const x = 123e34;
+const x = 12300000000000000000000000;
+const x = 0x1fffffffffffff;
+const x = 9007199254740991;
+const x = 9007_1992547409_91;
+```
+
+### [@typescript-eslint/no-magic-numbers](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-magic-numbers.md)
+
+`Level: error`
+
+Disallow magic numbers.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const dutyFreePrice: number = 100;
+const finalPrice: number = dutyFreePrice + dutyFreePrice * 0.25;
+
+const arr: number[] = [1, 2, 3];
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const tax: number = 0.25;
+const dutyFreePrice: number = 100;
+const finalPrice: number = dutyFreePrice + dutyFreePrice * tax;
+
+const foo: number = 1;
+const baz: number = 2;
+const bar: number = 3;
+const arr: number[] = [foo, baz, bar];
+```
+
+### [@typescript-eslint/no-misused-new](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-misused-new.md)
+
+`Level: error`
+
+Enforce valid definition of `new` and `constructor`.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+class C {
+  new(): C;
+}
+
+interface I {
+  new (): I;
+  constructor(): void;
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+class C {
+  constructor() {}
+}
+interface I {
+  new (): C;
+}
+```
+
+### [@typescript-eslint/no-misused-promises](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-misused-promises.md)
+
+`Level: error`
+
+Avoid using promises in places not designed to handle them.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const promise = Promise.resolve('value');
+
+if (promise) {
+  // Do something
+}
+
+const val = promise ? 123 : 456;
+
+while (promise) {
+  // Do something
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const promise = Promise.resolve('value');
+
+if (await promise) {
+  // Do something
+}
+
+const val = (await promise) ? 123 : 456;
+
+while (await promise) {
+  // Do something
+}
+```
+
+### [@typescript-eslint/no-namespace](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-namespace.md)
+
+`Level: error`
+
+Disallow the use of custom TypeScript modules and namespaces
+
+### [@typescript-eslint/no-non-null-asserted-optional-chain](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-asserted-optional-chain.md)
+
+`Level: error`
+
+Disallows using a non-null assertion after an optional chain expression.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+foo?.bar!;
+foo?.bar()!;
+
+// Prior to TS3.9, foo?.bar!.baz meant (foo?.bar).baz - i.e. the non-null assertion is applied to the entire chain so far.
+// For TS3.9 and greater, the non-null assertion is only applied to the property itself, so it's safe.
+// The following is incorrect code if you're using less than TS3.9
+foo?.bar!.baz;
+foo?.bar!();
+foo?.bar!().baz;
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+foo?.bar;
+(foo?.bar).baz;
+foo?.bar();
+foo?.bar();
+foo?.bar().baz;
+
+// The following is correct code if you're using TS3.9 or greater
+foo?.bar!.baz;
+foo?.bar!();
+foo?.bar!().baz;
+```
+
+### [@typescript-eslint/no-non-null-assertion](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-non-null-assertion.md)
+
+`Level: error`
+
+ddddddddddddddddd
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+interface Foo {
+  bar?: string;
+}
+
+const foo: Foo = getFoo();
+const hasBaz: boolean = foo.bar!.includes('baz');
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+interface Foo {
+  bar?: string;
+}
+
+const foo: Foo = getFoo();
+const hasBaz: boolean = foo.bar?.includes('baz') ?? false;
+```
+
+### [@typescript-eslint/no-parameter-properties](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-parameter-properties.md)
+
+`Level: error`
+
+Parameter properties can be confusing to those new to TypeScript as they are less explicit than other ways of declaring and initializing class members.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+class Foo {
+  constructor(readonly name: string) {}
+}
+
+class Foo {
+  constructor(private name: string) {}
+}
+
+class Foo {
+  constructor(protected name: string) {}
+}
+
+class Foo {
+  constructor(public name: string) {}
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+class Foo {
+  constructor(private readonly name: string) {}
+}
+
+class Foo {
+  constructor(protected readonly name: string) {}
+}
+
+class Foo {
+  constructor(public readonly name: string) {}
+}
+```
+
+### [@typescript-eslint/no-redeclare](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-redeclare.md)
+
+`Level: error`
+
+Disallow variable re-declaration.
+
+### [@typescript-eslint/no-require-imports](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-require-imports.md)
+
+`Level: error`
+
+Prefer the newer ES6-style `imports` over `require()`.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+const lib = require('lib');
+const lib2 = require('lib2');
+const lib5 = require('lib5');
+const lib6 = require('lib6');
+const lib8 = require('lib8');
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+const lib3 = load('not_an_import');
+const lib4 = lib2.subImport;
+const lib7 = 700;
+// import { l } from 'lib';
+// import lib9 = lib2.anotherSubImport;
+// import lib10 from 'lib10';
+```
+
+### [@typescript-eslint/no-shadow](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-shadow.md)
+
+`Level: error`
+
+Disallow variable declarations from shadowing variables declared in the outer scope.
+
+### [@typescript-eslint/no-this-alias](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-this-alias.md)
+
+`Level: error`
+
+Allow `const { props, state } = this`; false by default.
+
+Allow `const self = this`; `[]` by default.
+
+### [@typescript-eslint/no-throw-literal](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-throw-literal.md)
+
+`Level: error`
+
+Disallow throwing literals as exceptions.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+throw 'error';
+
+throw 0;
+
+throw undefined;
+
+throw null;
+
+const err = new Error();
+throw 'an ' + err;
+
+const err = new Error();
+throw `${err}`;
+
+const err = '';
+throw err;
+
+function err() {
+  return '';
+}
+throw err();
+
+const foo = {
+  bar: ''
+};
+throw foo.bar;
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+throw new Error();
+
+throw new Error("error");
+
+const e = new Error("error");
+throw e;
+
+try {
+    throw new Error("error");
+} catch (e) {
+    throw e;
+}
+
+const err = new Error();
+throw err;
+
+function err() {
+  return new Error();
+}
+throw err();
+
+const foo = {
+  bar: new Error();
+}
+throw foo.bar;
+
+class CustomError extends Error {
+  // ...
+};
+throw new CustomError();
 ```

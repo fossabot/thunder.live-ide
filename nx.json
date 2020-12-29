@@ -25,12 +25,21 @@
     }
   },
   "projects": {
-    "live-ide": {
+    "ide-playground": {
       "tags": []
     },
-    "live-ide-e2e": {
+    "ide-playground-e2e": {
       "tags": [],
-      "implicitDependencies": ["live-ide"]
+      "implicitDependencies": ["ide-playground"]
+    },
+    "ui-playground": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "ui-controls": {
+      "tags": []
     }
   }
 }

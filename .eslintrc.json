@@ -260,6 +260,15 @@
         // Note you must disable the base rule as it can report incorrect errors
         "no-throw-literal": "off",
         "@typescript-eslint/no-throw-literal": ["error"],
+        "@typescript-eslint/no-type-alias": "off",
+        "@typescript-eslint/no-unnecessary-boolean-literal-compare": [
+          "error",
+          {
+            "allowComparingNullableBooleansToTrue": false,
+            "allowComparingNullableBooleansToFalse": false
+          }
+        ],
+        "@typescript-eslint/no-unnecessary-condition": ["error"],
 
         // Nx rules
         "@nrwl/nx/enforce-module-boundaries": [

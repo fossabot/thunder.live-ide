@@ -1881,3 +1881,91 @@ class CustomError extends Error {
 };
 throw new CustomError();
 ```
+
+### [@typescript-eslint/no-type-alias](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-type-alias.md)
+
+`Level: off`
+
+We will ignore this rule to support various aliases of `type`.
+
+### [@typescript-eslint/no-unnecessary-boolean-literal-compare](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-boolean-literal-compare.md)
+
+`Level: error`
+
+Flags unnecessary equality comparisons against boolean literals.
+
+Comparing boolean values to boolean literals is unnecessary, those comparisons result in the same booleans. Using the boolean values directly, or via a unary negation (`!value`), is more concise and clearer.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+declare const someCondition: boolean;
+if (someCondition === true) {
+}
+
+declare const someNullCondition: boolean | null;
+if (someNullCondition !== true) {
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+declare const someCondition: boolean;
+if (someCondition) {
+}
+
+declare const someNullCondition: boolean | null;
+if (!someNullCondition) {
+}
+```
+
+### [@typescript-eslint/no-unnecessary-condition](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-unnecessary-condition.md)
+
+`Level: error`
+
+Prevents conditionals where the type is always truthy or always falsy.
+
+![BAD](https://img.shields.io/badge/-BAD-critical)
+
+```ts
+function head<T>(items: T[]) {
+  // items can never be nullable, so this is unnecessary
+  if (items) {
+    return items[0].toUpperCase();
+  }
+}
+
+function foo(arg: 'bar' | 'baz') {
+  // arg is never nullable or empty string, so this is unnecessary
+  if (arg) {
+  }
+}
+
+function bar<T>(arg: string) {
+  // arg can never be nullish, so ?. is unnecessary
+  return arg?.length;
+}
+```
+
+![GOOD](https://img.shields.io/badge/-GOOD-informational)
+
+```ts
+function head<T>(items: T[]) {
+  // Necessary, since items.length might be 0
+  if (items.length) {
+    return items[0].toUpperCase();
+  }
+}
+
+function foo(arg: string) {
+  // Necessary, since foo might be ''.
+  if (arg) {
+  }
+}
+
+function bar(arg?: string | null) {
+  // Necessary, since arg might be nullish
+  return arg?.length;
+}
+```

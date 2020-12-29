@@ -1,31 +1,31 @@
 {
   "version": 2,
   "projects": {
-    "live-ide": {
+    "ide-playground": {
       "projectType": "application",
-      "root": "apps/live-ide",
-      "sourceRoot": "apps/live-ide/src",
+      "root": "apps/ide-playground",
+      "sourceRoot": "apps/ide-playground/src",
       "prefix": "ide",
       "targets": {
         "build": {
           "executor": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/live-ide",
-            "index": "apps/live-ide/src/index.html",
-            "main": "apps/live-ide/src/main.ts",
-            "polyfills": "apps/live-ide/src/polyfills.ts",
-            "tsConfig": "apps/live-ide/tsconfig.app.json",
+            "outputPath": "dist/apps/ide-playground",
+            "index": "apps/ide-playground/src/index.html",
+            "main": "apps/ide-playground/src/main.ts",
+            "polyfills": "apps/ide-playground/src/polyfills.ts",
+            "tsConfig": "apps/ide-playground/tsconfig.app.json",
             "aot": true,
-            "assets": ["apps/live-ide/src/favicon.ico", "apps/live-ide/src/assets"],
-            "styles": ["apps/live-ide/src/styles.scss"],
+            "assets": ["apps/ide-playground/src/favicon.ico", "apps/ide-playground/src/assets"],
+            "styles": ["apps/ide-playground/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/live-ide/src/environments/environment.ts",
-                  "with": "apps/live-ide/src/environments/environment.prod.ts"
+                  "replace": "apps/ide-playground/src/environments/environment.ts",
+                  "with": "apps/ide-playground/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -53,58 +53,200 @@
         "serve": {
           "executor": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "live-ide:build"
+            "browserTarget": "ide-playground:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "live-ide:build:production"
+              "browserTarget": "ide-playground:build:production"
             }
           }
         },
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "live-ide:build"
+            "browserTarget": "ide-playground:build"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/live-ide/src/**/*.ts", "apps/live-ide/src/**/*.html"]
+            "lintFilePatterns": ["apps/ide-playground/src/**/*.ts", "apps/ide-playground/src/**/*.html"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/live-ide"],
+          "outputs": ["coverage/apps/ide-playground"],
           "options": {
-            "jestConfig": "apps/live-ide/jest.config.js",
+            "jestConfig": "apps/ide-playground/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "live-ide-e2e": {
-      "root": "apps/live-ide-e2e",
-      "sourceRoot": "apps/live-ide-e2e/src",
+    "ide-playground-e2e": {
+      "root": "apps/ide-playground-e2e",
+      "sourceRoot": "apps/ide-playground-e2e/src",
       "projectType": "application",
       "targets": {
         "e2e": {
           "executor": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/live-ide-e2e/cypress.json",
-            "tsConfig": "apps/live-ide-e2e/tsconfig.e2e.json",
-            "devServerTarget": "live-ide:serve"
+            "cypressConfig": "apps/ide-playground-e2e/cypress.json",
+            "tsConfig": "apps/ide-playground-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ide-playground:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "live-ide:serve:production"
+              "devServerTarget": "ide-playground:serve:production"
             }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/live-ide-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/ide-playground-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "ui-playground": {
+      "projectType": "application",
+      "root": "apps/ui-playground",
+      "sourceRoot": "apps/ui-playground/src",
+      "prefix": "thunder-platform",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ui-playground",
+            "index": "apps/ui-playground/src/index.html",
+            "main": "apps/ui-playground/src/main.ts",
+            "polyfills": "apps/ui-playground/src/polyfills.ts",
+            "tsConfig": "apps/ui-playground/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/ui-playground/src/favicon.ico", "apps/ui-playground/src/assets"],
+            "styles": ["apps/ui-playground/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ui-playground/src/environments/environment.ts",
+                  "with": "apps/ui-playground/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ui-playground:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ui-playground:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ui-playground:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/ui-playground/src/**/*.ts", "apps/ui-playground/src/**/*.html"]
+          }
+        }
+      }
+    },
+    "core": {
+      "projectType": "library",
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "prefix": "thunder-platform",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/core/tsconfig.lib.json",
+            "project": "libs/core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/core/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/core/src/**/*.ts", "libs/core/src/**/*.html"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core"],
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui-controls": {
+      "projectType": "library",
+      "root": "libs/ui-controls",
+      "sourceRoot": "libs/ui-controls/src",
+      "prefix": "thunder-platform",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/ui-controls/tsconfig.lib.json",
+            "project": "libs/ui-controls/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/ui-controls/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui-controls/src/**/*.ts", "libs/ui-controls/src/**/*.html"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui-controls"],
+          "options": {
+            "jestConfig": "libs/ui-controls/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -120,11 +262,12 @@
       "strict": true
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     },
     "@nrwl/angular:component": {
       "style": "scss"
     }
   },
-  "defaultProject": "live-ide"
+  "defaultProject": "ide-playground"
 }

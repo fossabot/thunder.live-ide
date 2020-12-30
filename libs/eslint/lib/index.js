@@ -162,7 +162,7 @@ module.exports = {
               }
             ],
             '@typescript-eslint/func-call-spacing': ['error', 'never'],
-            '@typescript-eslint/indent': ['error', 4, { SwitchCase: 1, flatTernaryExpressions: false, ignoredNodes: [] }],
+            '@typescript-eslint/indent': ['error', 2, { SwitchCase: 1, flatTernaryExpressions: false, ignoredNodes: [] }], // DONE
             '@typescript-eslint/keyword-spacing': ['error', {}],
             '@typescript-eslint/lines-between-class-members': [
               'error',

@@ -129,8 +129,12 @@ function createSampleEslintStructure(categoryMap, masterFolder, namePrefix) {
       var cat = categories[catKey];
       var comments = [];
       var defaultOptions = ['error', ...cat.create.prototype.defaultOptions];
+      comments.push('// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS');
+      comments.push(`/* eslint-disable ${namePrefix}/${catKey} */`);
+      comments.push('');
       comments.push(`// "${namePrefix}/${catKey}": ${JSON.stringify(defaultOptions)},`);
       comments.push(`// ${cat.meta.docs.description}`);
+      // comments.push(`// ${cat.meta.docs.url}`);
       comments.push('');
       fs.writeFileSync(path.join(folder, catKey + '.ts'), comments.join('\r\n'));
     });

@@ -1,6 +1,6 @@
 {
-  "extends": ["../../.eslintrc.json"],
-  "ignorePatterns": ["!src/**/*"],
+  "extends": ["../../.eslintrc.json", "plugin:@thunder-angular/strict-angular"],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts"],

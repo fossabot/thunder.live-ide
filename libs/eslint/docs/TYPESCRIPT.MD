@@ -1677,7 +1677,7 @@ Require or disallow spacing between function identifiers and their invocations
 
 ### [@typescript-eslint/indent](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/indent.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/stylistic-issues/indent.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/stylistic-issues/indent.ts)
 ![category](https://img.shields.io/badge/category-Stylistic%20Issues-yellowgreen)
 ![type](https://img.shields.io/badge/type-layout-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -1688,13 +1688,22 @@ Enforce consistent indentation
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+// prettier-ignore
+@Component({
+    selector: 'app-root', // <-- error: use 4 spaces
+    changeDetection: ChangeDetectionStrategy.OnPush // <-- error: use 2 tabs
+})
+export class AppComponent {}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+@Component({
+  selector: 'app-root',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class AppComponent {}
 ```
 
 ### [@typescript-eslint/keyword-spacing](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/keyword-spacing.md)

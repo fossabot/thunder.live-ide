@@ -105,5 +105,9 @@
       "parser": "typescript",
       "style": "eslint"
     }
-  }
+  },
+  "workspaces": [
+    "libs/eslint",
+    "libs/assets"
+  ]
 }

@@ -20,7 +20,8 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@thunder-angular/core": ["libs/core/src/index.ts"],
-      "@thunder-angular/ui-controls": ["libs/ui-controls/src/index.ts"]
+      "@thunder-angular/ui-controls": ["libs/ui-controls/src/index.ts"],
+      "@thunder-angular/eslint": ["libs/eslint/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

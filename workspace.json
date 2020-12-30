@@ -250,6 +250,32 @@
           }
         }
       }
+    },
+    "eslint": {
+      "projectType": "library",
+      "root": "libs/eslint",
+      "sourceRoot": "libs/eslint/src",
+      "prefix": "thunder-platform",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "libs/eslint/tsconfig.lib.json",
+            "project": "libs/eslint/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/eslint/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/eslint/src/**/*.ts", "libs/eslint/src/**/*.html"]
+          }
+        }
+      }
     }
   },
   "cli": {

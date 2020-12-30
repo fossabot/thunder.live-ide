@@ -40,6 +40,9 @@
     },
     "ui-controls": {
       "tags": []
+    },
+    "eslint": {
+      "tags": []
     }
   }
 }

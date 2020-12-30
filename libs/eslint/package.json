@@ -1,0 +1,7 @@
+{
+  "name": "@thunder-angular/eslint-plugin",
+  "version": "1.0.0",
+  "description": "TypeScript plugin for ESLint",
+  "license": "MIT",
+  "main": "./lib/index.js"
+}

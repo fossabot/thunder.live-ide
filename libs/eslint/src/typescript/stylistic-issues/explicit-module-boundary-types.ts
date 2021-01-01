@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 // "@typescript/eslint/explicit-module-boundary-types": ["error",{"allowArgumentsExplicitlyTypedAsAny":false,"allowDirectConstAssertionInArrowFunctions":true,"allowedNames":[],"allowHigherOrderFunctions":true,"allowTypedFunctionExpressions":true}],

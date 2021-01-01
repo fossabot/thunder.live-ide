@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/member-delimiter-style */
 
 // "@typescript/eslint/member-delimiter-style": ["error",{"multiline":{"delimiter":"semi","requireLast":true},"singleline":{"delimiter":"semi","requireLast":false}}],

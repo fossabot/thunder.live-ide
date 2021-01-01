@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 // "@typescript/eslint/explicit-function-return-type": ["error",{"allowExpressions":false,"allowTypedFunctionExpressions":true,"allowHigherOrderFunctions":true,"allowDirectConstAssertionInArrowFunctions":true,"allowConciseArrowFunctionExpressionsStartingWithVoid":false}],

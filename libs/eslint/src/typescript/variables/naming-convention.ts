@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/naming-convention */
 
 // "@typescript/eslint/naming-convention": ["error",{"selector":"default","format":["camelCase"],"leadingUnderscore":"allow","trailingUnderscore":"allow"},{"selector":"variable","format":["camelCase","UPPER_CASE"],"leadingUnderscore":"allow","trailingUnderscore":"allow"},{"selector":"typeLike","format":["PascalCase"]}],

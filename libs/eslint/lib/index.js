@@ -38,13 +38,14 @@ module.exports = {
             '@typescript-eslint/no-explicit-any': ['error', { fixToUnknown: false, ignoreRestArgs: false }],
             '@typescript-eslint/no-extraneous-class': [
               'error',
-              { allowConstructorOnly: false, allowEmpty: false, allowStaticOnly: false, allowWithDecorator: false }
+              { allowConstructorOnly: false, allowEmpty: false, allowStaticOnly: false, allowWithDecorator: true }
             ],
             '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true, ignoreIIFE: false }],
             '@typescript-eslint/no-for-in-array': ['error'],
             '@typescript-eslint/no-implicit-any-catch': ['error', { allowExplicitAny: false }],
             '@typescript-eslint/no-implied-eval': ['error'],
-            '@typescript-eslint/no-inferrable-types': ['error', { ignoreParameters: false, ignoreProperties: false }],
+            // Default options: ['error', { ignoreParameters: true, ignoreProperties: true }],
+            '@typescript-eslint/no-inferrable-types': 'off',
             '@typescript-eslint/no-invalid-this': ['error', { capIsConstructor: true }],
             '@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true, allowAsThisParameter: false }],
             '@typescript-eslint/no-loop-func': ['error'],
@@ -52,12 +53,13 @@ module.exports = {
               'error',
               {
                 ignore: [],
-                ignoreArrayIndexes: false,
+                ignoreArrayIndexes: true,
+                ignoreDefaultValues: true,
                 enforceConst: false,
                 detectObjects: false,
-                ignoreNumericLiteralTypes: false,
-                ignoreEnums: false,
-                ignoreReadonlyClassProperties: false
+                ignoreEnums: true,
+                ignoreNumericLiteralTypes: true,
+                ignoreReadonlyClassProperties: true
               }
             ],
             '@typescript-eslint/no-misused-new': ['error'],
@@ -248,23 +250,24 @@ module.exports = {
               { allowComparingNullableBooleansToTrue: true, allowComparingNullableBooleansToFalse: true }
             ],
             '@typescript-eslint/prefer-for-of': ['error'],
-            '@typescript-eslint/quotes': ['error', 'double', { allowTemplateLiterals: false, avoidEscape: false }],
+            // DONE
+            '@typescript-eslint/quotes': ['error', 'single', { allowTemplateLiterals: false, avoidEscape: false }],
             // '@typescript-eslint/semi': ['error', 'always', { omitLastInOneLineBlock: false, beforeStatementContinuationChars: 'any' }],
             '@typescript-eslint/semi': ['error'],
-            '@typescript-eslint/space-before-function-paren': ['error', 'always'],
+            '@typescript-eslint/space-before-function-paren': ['error', 'never'],
             '@typescript-eslint/space-infix-ops': ['error', { int32Hint: false }],
             '@typescript-eslint/type-annotation-spacing': ['error', {}],
             '@typescript-eslint/typedef': [
               'error',
               {
-                arrayDestructuring: false,
-                arrowParameter: false,
-                memberVariableDeclaration: false,
-                objectDestructuring: false,
-                parameter: false,
-                propertyDeclaration: false,
-                variableDeclaration: false,
-                variableDeclarationIgnoreFunction: false
+                arrayDestructuring: true,
+                arrowParameter: true,
+                memberVariableDeclaration: true,
+                objectDestructuring: true,
+                parameter: true,
+                propertyDeclaration: true,
+                variableDeclaration: true,
+                variableDeclarationIgnoreFunction: true
               }
             ],
             // Variables
@@ -290,7 +293,8 @@ module.exports = {
               'error',
               { functions: true, classes: true, enums: true, variables: true, typedefs: true, ignoreTypeReferences: true }
             ],
-            '@typescript-eslint/unified-signatures': ['error'],
+            // This rule will be disable to support `overloads`
+            '@typescript-eslint/unified-signatures': 'off',
             // Possible Errors
             '@typescript-eslint/no-dupe-class-members': ['error'],
             '@typescript-eslint/no-extra-parens': ['error', 'all'],

@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 
 // "@typescript/eslint/consistent-type-assertions": ["error",{"assertionStyle":"as","objectLiteralTypeAssertions":"allow"}],

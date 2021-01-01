@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 
 // "@typescript/eslint/consistent-type-imports": ["error",{"prefer":"type-imports","disallowTypeAnnotations":true}],

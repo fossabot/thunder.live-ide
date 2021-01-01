@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/triple-slash-reference */
 
 // "@typescript/eslint/triple-slash-reference": ["error",{"lib":"always","path":"never","types":"prefer-import"}],

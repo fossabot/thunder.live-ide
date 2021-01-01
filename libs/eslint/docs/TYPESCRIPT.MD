@@ -537,7 +537,7 @@ Disallow function declarations that contain unsafe references inside loop statem
 
 ### [@typescript-eslint/no-magic-numbers](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-magic-numbers.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/no-magic-numbers.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/no-magic-numbers.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -547,13 +547,28 @@ Disallow magic numbers
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+// prettier-ignore
+export const badPrice: number = 100 * 0.25;
+export const badArray: number[] = [1, 2, 3];
+export class Foo {
+  public score: number = 100;
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+export const price: number = 100;
+export const tax: number = 0.25;
+export const goodPrice: number = price * tax;
 
+export const foo: number = 1;
+export const baz: number = 2;
+export const bar: number = 3;
+export const arr: number[] = [foo, baz, bar];
+export class Baz {
+  public readonly score: number = 100; // <-- must have `readonly` modifier
+}
 ```
 
 ### [@typescript-eslint/no-misused-new](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-misused-new.md)
@@ -1730,7 +1745,7 @@ Enforce consistent spacing before and after keywords
 
 ### [@typescript-eslint/lines-between-class-members](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/lines-between-class-members.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/stylistic-issues/lines-between-class-members.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/stylistic-issues/lines-between-class-members.ts)
 ![category](https://img.shields.io/badge/category-Stylistic%20Issues-yellowgreen)
 ![type](https://img.shields.io/badge/type-layout-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -1741,13 +1756,51 @@ Require or disallow an empty line between class members
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+// prettier-ignore
+export class BadClass {
+  public readonly baz: number = 1;
+  public readonly bar: number = 2; // <-- error
+}
+export class Foo {
+  public baz(): void {
+    // Do something
+  }
+  public qux(): void {
+    // Do something
+  }
+  public bar(a: string): void;
+  public bar(a: string, b: string): void;
+  public bar(a: string, b?: string): void {
+    console.log(a, b);
+  }
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+export class GoodPropertyClass {
+  public readonly baz: number = 1;
 
+  public readonly bar: number = 2;
+}
+export class GoodClass {
+  public baz(): void {
+    // Do something
+  }
+
+  public qux(): void {
+    // Do something
+  }
+
+  public bar(a: string): void;
+
+  public bar(a: string, b: string): void;
+
+  public bar(a: string, b?: string): void {
+    console.log(a, b);
+  }
+}
 ```
 
 ### [@typescript-eslint/member-delimiter-style](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/member-delimiter-style.md)
@@ -1967,24 +2020,29 @@ Prefer a ‘for-of’ loop over a standard ‘for’ loop if the index is only u
 
 ### [@typescript-eslint/quotes](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/quotes.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/stylistic-issues/quotes.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/stylistic-issues/quotes.ts)
 ![category](https://img.shields.io/badge/category-Stylistic%20Issues-yellowgreen)
 ![type](https://img.shields.io/badge/type-layout-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
 ![fixable](https://img.shields.io/badge/-fixable-blue)
 
-Enforce the consistent use of either backticks, double, or single quotes
+Enforce the consistent use of `single` quote
 
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+// prettier-ignore
+export const double: string = "double";
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+export const single: string = 'single';
+export const backtick: string = `
+back
+tick
+`;
 ```
 
 ### [@typescript-eslint/semi](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/semi.md)
@@ -2011,7 +2069,7 @@ Require or disallow semicolons instead of ASI
 
 ### [@typescript-eslint/space-before-function-paren](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/space-before-function-paren.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/stylistic-issues/space-before-function-paren.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/stylistic-issues/space-before-function-paren.ts)
 ![category](https://img.shields.io/badge/category-Stylistic%20Issues-yellowgreen)
 ![type](https://img.shields.io/badge/type-layout-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -2022,13 +2080,22 @@ Enforces consistent spacing before function parenthesis
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+// prettier-ignore
+export class BadClass {
+  public foo (): void {
+    // Do something
+  }
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+export class BadClass {
+  public foo(): void {
+    // Do something
+  }
+}
 ```
 
 ### [@typescript-eslint/space-infix-ops](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/space-infix-ops.md)
@@ -2205,24 +2272,14 @@ Disallow the use of variables before they are defined
 
 ### [@typescript-eslint/unified-signatures](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/unified-signatures.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/variables/unified-signatures.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/variables/unified-signatures.ts)
 ![category](https://img.shields.io/badge/category-Variables-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
 
 Warns for any two overloads that could be unified into one by using a union or an optional/rest parameter
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
-
-```ts
-
-```
-
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
-
-```ts
-
-```
+This rule will be disable to support `overloads`
 
 ## Possible Errors
 

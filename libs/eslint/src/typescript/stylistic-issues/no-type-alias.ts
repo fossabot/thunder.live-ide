@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/no-type-alias */
 
 // "@typescript/eslint/no-type-alias": ["error",{"allowAliases":"never","allowCallbacks":"never","allowConditionalTypes":"never","allowConstructors":"never","allowLiterals":"never","allowMappedTypes":"never","allowTupleTypes":"never"}],

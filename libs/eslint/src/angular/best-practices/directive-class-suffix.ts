@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @angular-eslint/directive-class-suffix */
 
 // "@angular-eslint/directive-class-suffix": ["error",{"suffixes":["Directive"]}],

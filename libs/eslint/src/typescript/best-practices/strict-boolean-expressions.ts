@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 
 // "@typescript/eslint/strict-boolean-expressions": ["error",{"allowString":true,"allowNumber":true,"allowNullableObject":true,"allowNullableBoolean":false,"allowNullableString":false,"allowNullableNumber":false,"allowAny":false,"allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing":false}],

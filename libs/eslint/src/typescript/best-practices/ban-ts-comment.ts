@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 // "@typescript/eslint/ban-ts-comment": ["error",{"ts-expect-error":"allow-with-description","ts-ignore":true,"ts-nocheck":true,"ts-check":false,"minimumDescriptionLength":3}],

@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
 
 // "@typescript/eslint/no-invalid-void-type": ["error",{"allowInGenericTypeArguments":true,"allowAsThisParameter":false}],

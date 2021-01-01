@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/no-shadow */
 
 // "@typescript/eslint/no-shadow": ["error",{"allow":[],"builtinGlobals":false,"hoist":"functions","ignoreTypeValueShadow":true,"ignoreFunctionTypeParameterNameValueShadow":true}],

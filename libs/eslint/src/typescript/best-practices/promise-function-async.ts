@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/promise-function-async */
 
 // "@typescript/eslint/promise-function-async": ["error",{"allowAny":true,"allowedPromiseNames":[],"checkArrowFunctions":true,"checkFunctionDeclarations":true,"checkFunctionExpressions":true,"checkMethodDeclarations":true}],

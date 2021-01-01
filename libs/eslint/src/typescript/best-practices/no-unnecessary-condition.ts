@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 
 // "@typescript/eslint/no-unnecessary-condition": ["error",{"allowConstantLoopConditions":false,"allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing":false}],

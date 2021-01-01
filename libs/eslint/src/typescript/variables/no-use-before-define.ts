@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/no-use-before-define */
 
 // "@typescript/eslint/no-use-before-define": ["error",{"functions":true,"classes":true,"enums":true,"variables":true,"typedefs":true,"ignoreTypeReferences":true}],

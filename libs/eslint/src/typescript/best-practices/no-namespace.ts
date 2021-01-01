@@ -1,4 +1,4 @@
-// COMMENT THE BELOW DISABLED RULES TO SEE THE ERRORS
+// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // "@typescript/eslint/no-namespace": ["error",{"allowDeclarations":false,"allowDefinitionFiles":true}],

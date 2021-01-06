@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build Master Branch
+name: build
 
 on:
   push:
@@ -12,9 +12,8 @@ on:
 
 jobs:
   stable:
-    name: master
-    #runs-on: ubuntu-latest
-    runs-on: self-hosted
+    name: Build master branch
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2

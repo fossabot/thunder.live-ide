@@ -350,7 +350,7 @@ module.exports = {
             '@typescript-eslint/unified-signatures': 'off',
             // Possible Errors
             '@typescript-eslint/no-dupe-class-members': ['error'],
-            '@typescript-eslint/no-extra-parens': ['error', 'all'],
+            '@typescript-eslint/no-extra-parens': ['error', 'all', { returnAssign: false, nestedBinaryExpressions: false }],
             '@typescript-eslint/no-extra-semi': ['error'],
             '@typescript-eslint/no-loss-of-precision': ['error'],
             '@typescript-eslint/no-non-null-asserted-optional-chain': ['error'],

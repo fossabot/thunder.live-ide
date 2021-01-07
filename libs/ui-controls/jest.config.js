@@ -1,8 +1,6 @@
 module.exports = {
   displayName: 'ui-controls',
   preset: '../../jest.preset.js',
-  collectCoverageFrom: ['src/**/*.ts'],
-  coveragePathIgnorePatterns: ['index.ts'],
   setupFilesAfterEnv: ['<rootDir>/test/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -13,7 +11,9 @@ module.exports = {
       }
     }
   },
-  coverageReporters: ['html', 'json'],
+  collectCoverageFrom: ['src/**/*.ts'],
+  coveragePathIgnorePatterns: ['index.ts'],
+  coverageReporters: ['html', 'json-summary'],
   coverageThreshold: {
     global: {
       branches: 95,

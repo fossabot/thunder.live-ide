@@ -2,8 +2,6 @@ module.exports = {
   displayName: 'core',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/test/test-setup.ts'],
-  collectCoverageFrom: ['src/**/*.ts'],
-  coveragePathIgnorePatterns: ['index.ts'],
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -13,7 +11,9 @@ module.exports = {
       }
     }
   },
-  coverageReporters: ['html', 'json'],
+  collectCoverageFrom: ['src/**/*.ts'],
+  coveragePathIgnorePatterns: ['index.ts'],
+  coverageReporters: ['html', 'json-summary'],
   coverageThreshold: {
     global: {
       branches: 95,

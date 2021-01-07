@@ -329,7 +329,7 @@ module.exports = {
                 modifiers: ['exported', 'const', 'global'],
                 format: ['UPPER_CASE']
               },
-              { selector: 'typeLike', format: ['PascalCase'] }
+              { selector: ['typeLike', 'enumMember'], format: ['PascalCase'] }
             ],
             '@typescript-eslint/no-shadow': [
               'error',

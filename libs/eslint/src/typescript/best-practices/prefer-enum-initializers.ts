@@ -1,7 +1,3 @@
-// Bypass these rules to focus on the examples
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/naming-convention */
-
 // COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/prefer-enum-initializers */
 
@@ -38,3 +34,5 @@ enum GoodDirection {
   Up = 1,
   Down = 2
 }
+
+console.log(BadExample, BadColor, BadDirection, GoodExample, GoodColor, GoodDirection);

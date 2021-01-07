@@ -1188,7 +1188,7 @@ Prefer usage of `as const` over literal type
 
 ### [@typescript-eslint/prefer-enum-initializers](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-enum-initializers.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/prefer-enum-initializers.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-sucess)](../../../libs/eslint/src/typescript/best-practices/prefer-enum-initializers.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)

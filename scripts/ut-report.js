@@ -5,7 +5,7 @@ const { S3 } = require('aws-sdk');
 
 const s3 = new S3({
   region: 'ap-southeast-1',
-  credentials: { accessKeyId: process.env.AWS_ACCESS_KEY, secretAccessKey: process.env.AWS_SECRET_KEY }
+  credentials: { accessKeyId: 'AKIAR5WIC52TRLU5UQEO', secretAccessKey: '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' }
 });
 
 function uploadShieldsImg(url, name) {
@@ -17,7 +17,8 @@ function uploadShieldsImg(url, name) {
           Key: `badges/${name}-ut.svg`,
           Body: body,
           ACL: 'public-read',
-          ContentType: 'image/svg+xml'
+          ContentType: 'image/svg+xml',
+          CacheControl: 'max-age=60'
         },
         error => {
           if (!error) {

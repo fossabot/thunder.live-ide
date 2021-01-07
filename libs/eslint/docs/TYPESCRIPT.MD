@@ -1630,7 +1630,7 @@ Restricts the types allowed in boolean expressions
 
 ### [@typescript-eslint/switch-exhaustiveness-check](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/switch-exhaustiveness-check.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/switch-exhaustiveness-check.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/switch-exhaustiveness-check.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)

@@ -1637,16 +1637,65 @@ Restricts the types allowed in boolean expressions
 
 Exhaustiveness checking in switch with union type
 
+```ts
+enum WorkingDay {
+  Monday = 'Monday',
+  Tuesday = 'Tuesday',
+  Wednesday = 'Wednesday',
+  Thursday = 'Thursday',
+  Friday = 'Friday'
+}
+
+const getWorkingDay = (): WorkingDay | undefined => undefined;
+const workingDay: WorkingDay | undefined = getWorkingDay();
+```
+
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+switch (workingDay) {
+  case WorkingDay.Monday:
+    // Do something
+    break;
+  case WorkingDay.Tuesday:
+    // Do something
+    break; // <= Bad, not cover all cases of WorkingDay
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+switch (workingDay) {
+  case WorkingDay.Monday:
+    // Do something
+    break;
+  case WorkingDay.Tuesday:
+    // Do something
+    break;
+  case WorkingDay.Wednesday:
+    // Do something
+    break;
+  case WorkingDay.Thursday:
+    // Do something
+    break;
+  case WorkingDay.Friday:
+    // Do something
+    break;
+  case undefined:
+    // Do something
+    break;
+}
 
+switch (workingDay) {
+  case WorkingDay.Monday:
+    // Do something
+    break;
+  default:
+    // <= add a default case
+    // Do something
+    break;
+}
 ```
 
 ### [@typescript-eslint/triple-slash-reference](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/triple-slash-reference.md)

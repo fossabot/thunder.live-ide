@@ -1,8 +1,90 @@
+## Eslint
+
+### [padding-line-between-statements](https://eslint.org/docs/rules/padding-line-between-statements)
+
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/eslint/padding-line-between-statements.ts)
+![category](https://img.shields.io/badge/category-Eslint-yellowgreen)
+![type](https://img.shields.io/badge/type-problem-blueviolet)
+![recommended](https://img.shields.io/badge/recommended-error-ff69b4)
+
+This rule requires or disallows blank lines between the given 2 kinds of statements. Properly blank lines help developers to understand the code.
+
+```ts
+{ blankLine: 'always', prev: '*', next: 'return' },
+{ blankLine: 'always', prev: 'block-like', next: '*' }
+```
+
+```ts
+/*
+{ blankLine: 'always', prev: '*', next: 'return' }
+ */
+// BAD
+export function badFoo(): number {
+  const numberOfDog: number = 1;
+  const numberOfCat: number = 2;
+  return numberOfDog + numberOfCat;
+}
+
+// GOOD
+export function goodFoo(): number {
+  const numberOfDog: number = 1;
+  const numberOfCat: number = 2;
+
+  return numberOfDog + numberOfCat;
+}
+
+/*
+{ blankLine: 'always', prev: 'block', next: '*' }
+ */
+
+// BAD
+export function badBaz(numberOfDog: number = 1): void {
+  const oneDog: number = 1;
+  if (numberOfDog === oneDog) {
+    console.log('Had three dogs!');
+  }
+  console.log('Had many dogs!');
+  console.log('Also have no cat!');
+  switch (numberOfDog) {
+    case oneDog:
+      console.log('One dog!');
+      break;
+    default:
+      console.log('Many dogs!');
+      break;
+  }
+  console.log('Dog dog dog!');
+  console.log('Cat cat cat!');
+}
+
+// GOOD
+export function goodBaz(numberOfDog: number = 1): void {
+  const oneDog: number = 1;
+  if (numberOfDog === oneDog) {
+    console.log('Had three dogs!');
+  }
+
+  console.log('Had many dogs!');
+  console.log('Also have no cat!');
+  switch (numberOfDog) {
+    case oneDog:
+      console.log('One dog!');
+      break;
+    default:
+      console.log('Many dogs!');
+      break;
+  }
+
+  console.log('Dog dog dog!');
+  console.log('Cat cat cat!');
+}
+```
+
 ## Best Practices
 
 ### [@typescript-eslint/adjacent-overload-signatures](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/adjacent-overload-signatures.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/adjacent-overload-signatures.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/adjacent-overload-signatures.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-error-ff69b4)
@@ -12,18 +94,53 @@ Require that member overloads be consecutive
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+export class Foo {
+  /**
+   * Purpose 1
+   */
+  public foo(name: string): void;
+  /**
+   * Purpose 2
+   */
+  public foo(name: string, age: number): void;
+  // @ts-expect-error: Unreachable code error
+  public bar(): void {
+    // <-- error occurs
+    // Do something.
+  }
 
+  public foo(name: string, age?: number): void {
+    console.log(name, age);
+  }
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+export class GoodFoo {
+  /**
+   * Purpose 1
+   */
+  public foo(name: string): void;
+  /**
+   * Purpose 2
+   */
+  public foo(name: string, age: number): void;
+  public foo(name: string, age?: number): void {
+    console.log(name, age);
+  }
 
+  public bar(): void {
+    // <-- error occurs
+    // Do something.
+  }
+}
 ```
 
 ### [@typescript-eslint/await-thenable](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/await-thenable.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/await-thenable.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/await-thenable.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-problem-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-error-ff69b4)
@@ -33,18 +150,24 @@ Disallows awaiting a value that is not a Thenable
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+await 'value';
 
+const createValue = () => 'value';
+await createValue();
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+await Promise.resolve('value');
 
+const createValue = async () => 'value';
+await createValue();
 ```
 
 ### [@typescript-eslint/ban-ts-comment](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/ban-ts-comment.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/ban-ts-comment.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/ban-ts-comment.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-problem-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-error-ff69b4)
@@ -54,13 +177,49 @@ Bans `@ts-<directive>` comments from being used or requires descriptions after d
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+if (false) {
+  /*
+  @ts-expect-error
+   */
+  console.log('Unreachable code error');
+}
 
+if (false) {
+  /*
+  @ts-expect-error: TODO
+   */
+  console.log('Unreachable code error');
+}
+
+if (false) {
+  /*
+  @ts-nocheck: Unreachable code error
+  */
+  console.log('Unreachable code error');
+}
+
+if (false) {
+  /*
+  @ts-ignore: Unreachable code error
+  */
+  console.log('Unreachable code error');
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+if (false) {
+  /**
+   * @ts-expect-error: This is just an example of unreachable code, and need a comment with at least 6 characters.
+   */
+  console.log('Unreachable code error');
+}
 
+if (false) {
+  // Do not use ts-ignore/ts-nocheck to ensure compiler warns about unreachable code error
+  console.log('Unreachable code error');
+}
 ```
 
 ### [@typescript-eslint/ban-types](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/ban-types.md)
@@ -356,13 +515,34 @@ Forbids the use of classes as namespaces
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+export class BadEmptyClass {}
+export class ConstructorOnly {
+  constructor() {
+    // Do something
+    console.log('1');
+  }
+}
+export class StaticOnly {
+  public static readonly version: number = 42;
 
+  public static hello(): void {
+    console.log('Hello, world!');
+  }
+}
+
+export class SuperClass {
+  public prop: string = 'p';
+
+  public readonly score: number = 143;
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+export class ExampleDirective {}
 
+export class EmptyExtendsClass extends SuperClass {}
 ```
 
 ### [@typescript-eslint/no-floating-promises](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-floating-promises.md)
@@ -460,16 +640,16 @@ Disallow the use of `eval()`-like methods
 
 Disallows explicit type declarations for variables or parameters initialized to a number, string, or boolean
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
+This rule is disabled to support the `@typescript-eslint/typedef` rule.
 
 ```ts
+// BEST PRACTICES
+const numberOfCat: number = 10;
+console.log(numberOfCat);
 
-```
-
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
-
-```ts
-
+export class Baz {
+  public prop: string = 'p';
+}
 ```
 
 ### [@typescript-eslint/no-invalid-this](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-invalid-this.md)
@@ -535,39 +715,89 @@ Disallow function declarations that contain unsafe references inside loop statem
 
 ```
 
-### [@typescript-eslint/no-magic-numbers](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-magic-numbers.md)
+### [@thunder-angular/no-magic-numbers](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-magic-numbers.md)
 
 [![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/no-magic-numbers.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
 
-Disallow magic numbers
+Disallow magic numbers.
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
+This rule is customized to support `ignoreClassProperties` option.
+
+[More details...](../../../libs/eslint/lib/index.js#L3)
 
 ```ts
 // prettier-ignore
+// BAD
 export const badPrice: number = 100 * 0.25;
 export const badArray: number[] = [1, 2, 3];
-export class Foo {
-  public score: number = 100;
-}
-```
 
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
-
-```ts
+// GOOD
 export const price: number = 100;
-export const tax: number = 0.25;
-export const goodPrice: number = price * tax;
+export const taxPercentage: number = 0.25;
+export const goodPrice: number = price * taxPercentage;
 
 export const foo: number = 1;
 export const baz: number = 2;
 export const bar: number = 3;
-export const arr: number[] = [foo, baz, bar];
-export class Baz {
-  public readonly score: number = 100; // <-- must have `readonly` modifier
+export const goodArray: number[] = [foo, baz, bar];
+
+/**
+ * ignoreArrayIndexes: false
+ */
+const one: number = 1;
+const two: number = 2;
+const three: number = 3;
+const arrayIndexes: number[] = [one, two, three];
+
+// BAD
+export const badItem: number = arrayIndexes[1];
+
+// GOOD
+const goodIndex: number = 1;
+export const goodItem: number = arrayIndexes[goodIndex];
+
+/**
+ * ignoreDefaultValues: false
+ */
+
+// Best practices
+interface IAccountancy {
+  tax?: number;
+}
+const accountancy: IAccountancy = {};
+const { tax }: IAccountancy = accountancy;
+console.log(tax);
+
+/**
+ * ignoreEnums: true
+ */
+
+// Best practices
+export enum FilePermissions {
+  Read = 1,
+  Write = 2,
+  Execute = 4,
+  ReadExecute = Read | Execute,
+  ReadWriteExecute = Read | Write | Execute
+}
+
+/**
+ * ignoreNumericLiteralTypes: true
+ */
+
+// Best practices
+export type SmallPrimes = 2 | 3 | 5 | 7 | 11;
+
+/**
+ * ignoreClassProperties: true
+ */
+
+// Best practices
+export class GoodPropClass {
+  public score: number = 100;
 }
 ```
 
@@ -641,7 +871,7 @@ Disallow the use of custom TypeScript modules and namespaces
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
 
-Disallow variable redeclaration
+Disallow variable re-declaration
 
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
@@ -1584,7 +1814,7 @@ Consistent with type definition either `interface` or `type`
 
 ### [@typescript-eslint/consistent-type-imports](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/consistent-type-imports.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/stylistic-issues/consistent-type-imports.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/stylistic-issues/consistent-type-imports.ts)
 ![category](https://img.shields.io/badge/category-Stylistic%20Issues-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -1592,16 +1822,20 @@ Consistent with type definition either `interface` or `type`
 
 Enforces consistent usage of type imports
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
+![GOOD](https://img.shields.io/badge/-BEST%20PRACTICES-informational)
 
 ```ts
-
-```
-
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
-
-```ts
-
+/*
+import {
+	Directive
+} from '@angular/core';
+{
+  prefer: 'no-type-imports',
+  ignoreInferredTypes: true
+}
+*/
+@Directive()
+export class AbcDirective {}
 ```
 
 ### [@typescript-eslint/explicit-function-return-type](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/explicit-function-return-type.md)
@@ -2151,16 +2385,164 @@ Require consistent spacing around type annotations
 
 Requires type annotations to exist
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
-
 ```ts
+/*
+arrayDestructuring
+*/
 
-```
+// BAD
+const [a] = ['1'];
+const [b, c] = ['1', '2'];
+console.log(a, b, c);
 
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
+// GOOD
+const [x]: [string] = ['1'];
+const [ignoreProperty, z]: [boolean, string] = [true, 'text'];
+for (const [key, isValue] of new Map([['key', true]])) {
+  console.log(key, isValue);
+}
 
-```ts
+console.log(x, ignoreProperty, z);
 
+/*
+arrowParameter
+*/
+
+// BAD
+const badArrFunc: (size: number) => void = size => {
+  console.log(size);
+};
+
+['hello', 'world'].map(text => text.length);
+const mapper = {
+  map: (text: string): string => text + '...'
+};
+console.log(badArrFunc, mapper);
+
+// GOOD
+const goodArrFunc = (size: number): void => {
+  console.log(size);
+};
+
+console.log(goodArrFunc);
+
+/*
+memberVariableDeclaration
+*/
+
+// BAD
+export class BadContainsText {
+  public delayedText = '';
+
+  public immediateTextImplicit = 'text';
+}
+
+// GOOD
+export class GoodContainsText {
+  public delayedText: string = '';
+
+  public immediateTextImplicit: string = 'text';
+}
+
+/*
+objectDestructuring
+*/
+
+// BAD
+export function foo(): void {
+  const { length } = 'text';
+  const [l, i] = Math.random() ? ['1', '2'] : ['3', '4'];
+  console.log(length, l, i);
+}
+
+// GOOD
+const { length }: { length: number } = 'text';
+const [p, s]: [string, string] = Math.random() ? ['1', '2'] : ['3', '4'];
+console.log(length, p, s);
+
+/*
+parameter
+*/
+
+// BAD
+// @ts-expect-error: Expect error occurs
+export function withoutParameterType(param): void {
+  console.log(param);
+}
+
+// GOOD
+export function withParameterType(param: number): void {
+  console.log(param);
+}
+
+/*
+propertyDeclaration
+*/
+
+// BAD
+export interface IBadMembers {
+  // @ts-expect-error: Expect error occurs
+  member;
+  // @ts-expect-error: Expect error occurs
+  otherMember;
+}
+
+// GOOD
+export interface IGoodMembers {
+  member: string;
+  otherMember: string;
+}
+
+/*
+variableDeclaration
+*/
+
+// BAD
+export function badVariableDeclaration(): void {
+  const text = 'text';
+  let initialText = 'original';
+
+  initialText = 'text';
+
+  console.log(text, initialText);
+}
+
+// GOOD
+export function goodVariableDeclaration(): void {
+  const text: string = 'text';
+  let initialText: string = 'original';
+
+  initialText = 'text';
+
+  console.log(text, initialText);
+}
+
+/*
+variableDeclarationIgnoreFunction
+*/
+
+// BEST PRACTICES
+export function goodVariableDeclarationIgnoreFunction(): void {
+  const o = (): void => {
+    // TODO
+  };
+
+  const v: () => void = (): void => {
+    // TODO
+  };
+
+  console.log(o, v);
+}
+
+export class Foo {
+  public a = (): void => {
+    // TODO
+  };
+
+  public b: () => void = (): void => {
+    // TODO
+  };
+}
 ```
 
 ## Variables
@@ -2195,16 +2577,200 @@ require or disallow initialization in variable declarations
 
 Enforces naming conventions for everything across a codebase
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
-
 ```ts
+{
+  selector: 'interface',
+  format: ['PascalCase'],
+  custom: {
+    regex: '^I[A-Z]',
+    match: true
+  }
+}
+*/
 
-```
 
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
+// BAD
+export interface Foo {
+  name: string;
+}
 
-```ts
+// GOOD
+export interface IFoo {
+  name: string;
+}
 
+/*
+{
+  selector: 'typeParameter',
+  format: ['PascalCase'],
+  prefix: ['T', 'R', 'U', 'V', 'K']
+}
+*/
+
+// BAD
+export class BadGeneric<Request, Result> {
+  public request: Request | undefined;
+
+  public result: Result | undefined;
+
+  public foo(): void {
+    console.log(this.request, this.result);
+  }
+}
+
+// GOOD
+export class GoodGeneric<T, R, U, V> {
+  public t: T | undefined;
+
+  public r: R | undefined;
+
+  public u: U | undefined;
+
+  public v: V | undefined;
+
+  public foo(): void {
+    console.log(this.t, this.r, this.u, this.v);
+  }
+}
+
+/*
+{
+  selector: ['variable', 'parameter', 'property'],
+  types: ['boolean'],
+  format: ['PascalCase'],
+  prefix: ['is', 'should', 'has', 'can', 'did', 'will', 'ignore'],
+  filter: {
+    regex: '^(production|readonly)$',
+    match: false
+  }
+}
+*/
+
+// BAD
+export const paidFor: boolean = true; // No prefix
+export const wasPaidFor: boolean = true; // Wrong prefix
+export const areBillsPaidFor: boolean = true; // Custom prefix
+export const hadHaveHadBeenPaidFor: boolean = true; // What is this?
+export const invalid: boolean = false; // Not meaningful
+
+// GOOD
+export const isOnline: boolean = true;
+export const isPaidFor: boolean = true;
+export const hasChildren: boolean = true;
+
+// Boolean variable should be positive.
+// BAD
+export const isDisabled: boolean = true; // Negative
+export const isNotActive: boolean = true; // Negative
+export const hasNoBillingAddress: boolean = true; // Negative
+
+// GOOD
+export const isEnabled: boolean = true;
+export const isActive: boolean = true; // Negative
+export const hasBillingAddress: boolean = true; // Negative
+
+/*
+{
+  selector: ['variable', 'property', 'parameter', 'function', 'classMethod', 'objectLiteralMethod', 'typeMethod'],
+  format: ['camelCase']
+}
+*/
+
+// BAD
+const NumberOfDogs: number = 4;
+const NUMBEROFDOGS: number = 4;
+export function GetDogName(): string {
+  return 'Peter';
+}
+
+export function GET_CAT_NAME(): string {
+  return 'Nami';
+}
+
+console.log(NumberOfDogs, NUMBEROFDOGS);
+
+// GOOD
+const numberOfDogs: number = 4;
+export function getDogName(): string {
+  return 'Peter';
+}
+
+export function getCatName(): string {
+  return 'Nami';
+}
+
+console.log(numberOfDogs);
+
+/*
+{
+  selector: 'classProperty',
+  modifiers: ['private'],
+  format: ['camelCase'],
+  leadingUnderscore: 'require'
+},
+{
+  selector: 'classMethod',
+  modifiers: ['private'],
+  format: ['camelCase'],
+  leadingUnderscore: 'require'
+}
+*/
+
+// BAD
+export class BadClass {
+  private readonly privateProperty: string = '';
+
+  public foo(): void {
+    console.log(this.privateProperty);
+    this.privateMethod();
+  }
+
+  private privateMethod(): void {
+    // TODO
+  }
+}
+
+// GOOD
+export class GoodClass {
+  private readonly _privateProperty: string = '';
+
+  public foo(): void {
+    console.log(this._privateProperty);
+    this._privateMethod();
+  }
+
+  private _privateMethod(): void {
+    // TODO
+  }
+}
+
+/*
+{
+  selector: 'variable',
+  modifiers: ['exported', 'const', 'global'],
+  format: ['UPPER_CASE']
+}
+Require `const` declaration global must be in UPPERCASE
+*/
+
+// BAD
+export const numberOfAppFeature: number = 2;
+
+// GOOD
+export const NUMBER_OF_APP_FEATURE: number = 2;
+export function abc(): void {
+  const numberOfCat: number = 2;
+  console.log(numberOfCat);
+}
+
+/*
+{ selector: 'typeLike', format: ['PascalCase'] }
+*/
+
+export type myType = string | number;
+
+//BAD
+export type MyType = string | number;
 ```
 
 ### [@typescript-eslint/no-shadow](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-shadow.md)
@@ -2295,13 +2861,81 @@ Disallow duplicate class members
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+export class FirstFooDupe {
+  // @ts-expect-error: Expect error occurs
+  public bar(): void {
+    console.log('go to bar 01');
+  }
 
+  // @ts-expect-error: Expect error occurs
+  public bar(): void {
+    console.log('go to bar 02');
+  }
+}
+
+export class SecondFooDupe {
+  private _bar: string = '';
+
+  // @ts-expect-error: Expect error occurs
+  public get bar(): string {
+    return this._bar;
+  }
+
+  // @ts-expect-error: Expect error occurs
+  public bar(value: string): void {
+    this._bar = value;
+  }
+}
+
+export class ThirdFooDupe {
+  private readonly _bar: string = '';
+
+  // @ts-expect-error: Expect error occurs
+  public static bar(): void {
+    console.log('go to bar 01');
+  }
+
+  // @ts-expect-error: Expect error occurs
+  public static bar(): void {
+    console.log('go to bar 02');
+  }
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
+export class FirstFooNoDupe {
+  public firstBar(): void {
+    console.log('go to bar 01');
+  }
 
+  public secondBar(): void {
+    console.log('go to bar 02');
+  }
+}
+
+export class SecondFooNoDupe {
+  private _bar: string = '';
+
+  public get bar(): string {
+    return this._bar;
+  }
+
+  public set bar(value: string) {
+    this._bar = value;
+  }
+}
+
+export class ThirdFooNoDupe {
+  public static bar(): void {
+    console.log('go to bar 01');
+  }
+
+  public bar(): void {
+    console.log('go to bar 02');
+  }
+}
 ```
 
 ### [@typescript-eslint/no-extra-parens](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/no-extra-parens.md)
@@ -2476,21 +3110,11 @@ Disallows returning any from a function
 
 ### [@typescript-eslint/prefer-readonly-parameter-types](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-readonly-parameter-types.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/possible-errors/prefer-readonly-parameter-types.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/possible-errors/prefer-readonly-parameter-types.ts)
 ![category](https://img.shields.io/badge/category-Possible%20Errors-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
 
 Requires that function parameters are typed as readonly to prevent accidental mutation of inputs
 
-![BAD](https://img.shields.io/badge/-BAD-critical)
-
-```ts
-
-```
-
-![GOOD](https://img.shields.io/badge/-GOOD-informational)
-
-```ts
-
-```
+Turn off this rule to make consistency with Typescript strict rule `A parameter property is only allowed in a constructor implementation.ts(2369)`

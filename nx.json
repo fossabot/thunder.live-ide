@@ -28,10 +28,6 @@
     "ide-playground": {
       "tags": []
     },
-    "ide-playground-e2e": {
-      "tags": [],
-      "implicitDependencies": ["ide-playground"]
-    },
     "ui-playground": {
       "tags": []
     },

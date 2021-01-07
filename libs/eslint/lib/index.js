@@ -1,4 +1,7 @@
 module.exports = {
+  rules: {
+    'no-magic-numbers': require('./override-rules/no-magic-numbers').default
+  },
   configs: {
     'strict-typescript': {
       plugins: ['@typescript-eslint'],
@@ -7,6 +10,13 @@ module.exports = {
         {
           files: ['*.ts'],
           rules: {
+            // Eslint
+            'padding-line-between-statements': [
+              'error',
+              { blankLine: 'always', prev: '*', next: 'return' },
+              { blankLine: 'always', prev: 'block-like', next: '*' }
+            ],
+
             // Best Practices
             '@typescript-eslint/adjacent-overload-signatures': ['error'],
             '@typescript-eslint/await-thenable': ['error'],
@@ -17,7 +27,7 @@ module.exports = {
                 'ts-ignore': true,
                 'ts-nocheck': true,
                 'ts-check': false,
-                minimumDescriptionLength: 3
+                minimumDescriptionLength: 6
               }
             ],
             '@typescript-eslint/ban-types': ['error', {}],
@@ -44,22 +54,23 @@ module.exports = {
             '@typescript-eslint/no-for-in-array': ['error'],
             '@typescript-eslint/no-implicit-any-catch': ['error', { allowExplicitAny: false }],
             '@typescript-eslint/no-implied-eval': ['error'],
-            // Default options: ['error', { ignoreParameters: true, ignoreProperties: true }],
+            // '@typescript-eslint/no-inferrable-types': ['error', { ignoreParameters: true, ignoreProperties: true }],
             '@typescript-eslint/no-inferrable-types': 'off',
             '@typescript-eslint/no-invalid-this': ['error', { capIsConstructor: true }],
             '@typescript-eslint/no-invalid-void-type': ['error', { allowInGenericTypeArguments: true, allowAsThisParameter: false }],
             '@typescript-eslint/no-loop-func': ['error'],
-            '@typescript-eslint/no-magic-numbers': [
+            '@typescript-eslint/no-magic-numbers': 'off',
+            '@thunder-angular/no-magic-numbers': [
               'error',
               {
                 ignore: [],
-                ignoreArrayIndexes: true,
+                ignoreArrayIndexes: false,
                 ignoreDefaultValues: true,
                 enforceConst: false,
                 detectObjects: false,
                 ignoreEnums: true,
                 ignoreNumericLiteralTypes: true,
-                ignoreReadonlyClassProperties: true
+                ignoreClassProperties: true
               }
             ],
             '@typescript-eslint/no-misused-new': ['error'],
@@ -141,7 +152,7 @@ module.exports = {
             '@typescript-eslint/comma-spacing': ['error', { before: false, after: true }],
             '@typescript-eslint/consistent-indexed-object-style': ['error', 'record'],
             '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-            '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', disallowTypeAnnotations: true }],
+            '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'no-type-imports', disallowTypeAnnotations: true }],
             '@typescript-eslint/explicit-function-return-type': [
               'error',
               {
@@ -274,8 +285,50 @@ module.exports = {
             '@typescript-eslint/init-declarations': ['error', 'always'],
             '@typescript-eslint/naming-convention': [
               'error',
-              { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
-              { selector: 'variable', format: ['camelCase', 'UPPER_CASE'], leadingUnderscore: 'allow', trailingUnderscore: 'allow' },
+              {
+                selector: 'interface',
+                format: ['PascalCase'],
+                custom: {
+                  regex: '^I[A-Z]',
+                  match: true
+                }
+              },
+              {
+                selector: 'typeParameter',
+                format: ['PascalCase'],
+                prefix: ['T', 'R', 'U', 'V', 'K']
+              },
+              {
+                selector: ['variable', 'parameter', 'property'],
+                types: ['boolean'],
+                format: ['PascalCase'],
+                prefix: ['is', 'should', 'has', 'can', 'did', 'will', 'ignore'],
+                filter: {
+                  regex: '^(production|readonly)$',
+                  match: false
+                }
+              },
+              {
+                selector: ['variable', 'property', 'parameter', 'function', 'classMethod', 'objectLiteralMethod', 'typeMethod'],
+                format: ['camelCase']
+              },
+              {
+                selector: 'classProperty',
+                modifiers: ['private'],
+                format: ['camelCase'],
+                leadingUnderscore: 'require'
+              },
+              {
+                selector: 'classMethod',
+                modifiers: ['private'],
+                format: ['camelCase'],
+                leadingUnderscore: 'require'
+              },
+              {
+                selector: 'variable',
+                modifiers: ['exported', 'const', 'global'],
+                format: ['UPPER_CASE']
+              },
               { selector: 'typeLike', format: ['PascalCase'] }
             ],
             '@typescript-eslint/no-shadow': [
@@ -305,7 +358,8 @@ module.exports = {
             '@typescript-eslint/no-unsafe-call': ['error'],
             '@typescript-eslint/no-unsafe-member-access': ['error'],
             '@typescript-eslint/no-unsafe-return': ['error'],
-            '@typescript-eslint/prefer-readonly-parameter-types': ['error', { checkParameterProperties: true, ignoreInferredTypes: false }]
+            // '@typescript-eslint/prefer-readonly-parameter-types': ['error', { checkParameterProperties: false, ignoreInferredTypes: true }]
+            '@typescript-eslint/prefer-readonly-parameter-types': 'off'
           }
         }
       ]
@@ -369,10 +423,12 @@ module.exports = {
             '@angular-eslint/template/use-track-by-function': ['error'],
             '@angular-eslint/template/accessibility-elements-content': ['error'],
             '@angular-eslint/template/no-distracting-elements': ['error'],
-            '@angular-eslint/template/i18n': [
-              'error',
-              { checkId: true, checkText: true, checkAttributes: true, ignoreAttributes: [''], ignoreTags: [], boundTextAllowedPattern: '' }
-            ],
+            // '@angular-eslint/template/i18n': [
+            //   'error',
+            //   { checkId: true, checkText: true, checkAttributes: true, ignoreAttributes: [''], ignoreTags: [], boundTextAllowedPattern: '' }
+            // ],
+            // TODO: review the demand of i18n and this rule carefully
+            '@angular-eslint/template/i18n': 'off',
             '@angular-eslint/template/mouse-events-have-key-events': ['error'],
             '@angular-eslint/template/accessibility-valid-aria': ['error'],
             '@angular-eslint/template/accessibility-table-scope': ['error'],

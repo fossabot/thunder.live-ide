@@ -83,32 +83,6 @@
         }
       }
     },
-    "ide-playground-e2e": {
-      "root": "apps/ide-playground-e2e",
-      "sourceRoot": "apps/ide-playground-e2e/src",
-      "projectType": "application",
-      "targets": {
-        "e2e": {
-          "executor": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/ide-playground-e2e/cypress.json",
-            "tsConfig": "apps/ide-playground-e2e/tsconfig.e2e.json",
-            "devServerTarget": "ide-playground:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ide-playground:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/ide-playground-e2e/**/*.{js,ts}"]
-          }
-        }
-      }
-    },
     "ui-playground": {
       "projectType": "application",
       "root": "apps/ui-playground",

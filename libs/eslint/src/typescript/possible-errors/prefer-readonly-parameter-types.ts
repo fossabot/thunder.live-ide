@@ -1,5 +1,4 @@
-// COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
-/* eslint-disable @typescript-eslint/prefer-readonly-parameter-types */
+// Turn off this rule to make consistency with Typescript strict rule `A parameter property is only allowed in a constructor implementation.ts(2369)`
 
 // "@typescript/eslint/prefer-readonly-parameter-types": ["error",{"checkParameterProperties":true,"ignoreInferredTypes":false}],
 // Requires that function parameters are typed as readonly to prevent accidental mutation of inputs

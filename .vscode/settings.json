@@ -76,10 +76,7 @@
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
   "files.exclude": {
-    "**/.git": true,
-    "**/.DS_Store": true,
-    "**/coverage": true,
-    "**/*.scss.ts": true
+    "**/.git": true
   },
   "files.watcherExclude": {
     "**/.git": true,

@@ -6,11 +6,13 @@
 // https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/quotes.md
 
 // BAD
-export const double: string = "double";
+const double: string = "double";
+console.log(double);
 
 // GOOD
-export const single: string = 'single';
-export const backtick: string = `
+const single: string = 'single';
+const backtick: string = `
 back
 tick
 `;
+console.log(single, backtick);

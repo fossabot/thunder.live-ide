@@ -1,8 +1,3 @@
-// Bypass these rules to focus on the examples
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 // COMMENT THE DISABLED ESLINT RULES BELOW TO SEE MORE ERRORS
 /* eslint-disable @typescript-eslint/prefer-literal-enum-member */
 
@@ -13,6 +8,7 @@
 
 // Bad
 const outScopeVariable: number = 1;
+const value: string = 'value';
 
 enum BadValueAssignment {
   A = outScopeVariable, // <= Variable assignment
@@ -27,12 +23,8 @@ enum BadValueAssignment {
 
 // Good
 enum GoodValueAssignment {
-  //@ts-expect-error: Expect error occurs
-  A = false,
-  B = 'TestStr', // A regular string
-  C = 4, // A number
-  //@ts-expect-error: Expect error occurs
-  D = null,
-  //@ts-expect-error: Expect error occurs
-  E = /some_regex/
+  A = 'TestStr', // A regular string
+  B = 4 // A number
 }
+
+console.log(BadValueAssignment, GoodValueAssignment);

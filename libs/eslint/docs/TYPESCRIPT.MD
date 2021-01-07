@@ -1253,7 +1253,7 @@ Enforce `includes` method over `indexOf` method
 
 ### [@typescript-eslint/prefer-literal-enum-member](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-literal-enum-member.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/prefer-literal-enum-member.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/prefer-literal-enum-member.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -1278,11 +1278,8 @@ enum BadValueAssignment {
 
 ```ts
 enum GoodValueAssignment {
-  A = false,
-  B = 'TestStr', // A regular string
-  C = 4, // A number
-  D = null,
-  E = /some_regex/
+  A = 'TestStr', // A regular string
+  B = 4 // A number
 }
 ```
 

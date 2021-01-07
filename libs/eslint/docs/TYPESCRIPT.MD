@@ -1425,13 +1425,15 @@ Enforce that `RegExp#exec` is used instead of `String#match` if no global flag i
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
-
+'some text'.match(/text/);
+'some text are just texts'.match(/text/);
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+/text/.exec('some text');
+'some text are just texts'.match(/text/g);
 ```
 
 ### [@typescript-eslint/prefer-string-starts-ends-with](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-string-starts-ends-with.md)

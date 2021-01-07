@@ -1253,7 +1253,7 @@ Enforce `includes` method over `indexOf` method
 
 ### [@typescript-eslint/prefer-literal-enum-member](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-literal-enum-member.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/prefer-literal-enum-member.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-success)](../../../libs/eslint/src/typescript/best-practices/prefer-literal-enum-member.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -1263,13 +1263,24 @@ Require that all enum members be literal values to prevent unintended enum membe
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+const outScopeVariable: number = 1;
 
+enum BadValueAssignment {
+  A = outScopeVariable, // <= Variable assignment
+  B = {}, // <= Object assignment
+  D = `A ${value} template literal string`, // <= Template literal
+  E = new Set(outScopeVariable, outScopeVariable), // <= Constructor in assignment
+  F = outScopeVariable + outScopeVariable // <= Expression assignment
+}
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+enum GoodValueAssignment {
+  A = 'TestStr', // A regular string
+  B = 4 // A number
+}
 ```
 
 ### [@typescript-eslint/prefer-namespace-keyword](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-namespace-keyword.md)

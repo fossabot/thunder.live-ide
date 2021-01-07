@@ -3,7 +3,6 @@
 
 // Bypass this rule to focus on the examples.
 /* eslint-disable @typescript-eslint/no-type-alias */
-/* eslint-disable @typescript-eslint/prefer-literal-enum-member */
 
 // This rule is customized to support `ignoreClassProperties` option.
 // @see libs ./eslint/lib/override-rules/no-magic-numbers.js
@@ -65,9 +64,7 @@ console.log(tax);
 export enum FilePermissions   {
   Read = 1,
   Write = 2,
-  Execute = 4,
-  ReadExecute = Read | Execute,
-  ReadWriteExecute = Read | Write | Execute
+  Execute = 4
 }
 
 /**

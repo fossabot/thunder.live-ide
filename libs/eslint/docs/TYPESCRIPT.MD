@@ -1446,16 +1446,37 @@ Enforce that `RegExp#exec` is used instead of `String#match` if no global flag i
 
 Enforce the use of `String#startsWith` and `String#endsWith` instead of other equivalent methods of checking substrings
 
+```ts
+const stringVariable: string = 'text sample';
+```
+
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+// Start With
+stringVariable[0] === 'b';
+stringVariable.charAt(0) === 'b';
+stringVariable.indexOf('text') === 0;
+stringVariable.slice(0, 3) === 'text';
+stringVariable.substring(0, 3) === 'text';
+stringVariable.match(/^text/) != null;
+/^text/.test(stringVariable);
 
+// End With
+stringVariable[stringVariable.length - 1] === 'b';
+stringVariable.charAt(stringVariable.length - 1) === 'b';
+stringVariable.lastIndexOf('text') === stringVariable.length - 3;
+stringVariable.slice(-3) === 'text';
+stringVariable.substring(stringVariable.length - 3) === 'text';
+stringVariable.match(/text$/) != null;
+/text$/.test(stringVariable);
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+stringVariable.startsWith('text');
+stringVariable.endsWith('text');
 ```
 
 ### [@typescript-eslint/prefer-ts-expect-error](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-ts-expect-error.md)

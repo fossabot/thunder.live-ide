@@ -48,4 +48,11 @@ jobs:
         run: yarn nx run-many --target build --prod --all --parallel --with-deps
 
       - name: Test all projects
-        run: yarn nx run-many --target test --all --parallel
+        run: yarn nx run-many --target test --all --parallel --code-coverage
+
+      - name: Report UT coverages
+        if: ${{ always() }}
+        run: node .\scripts\ut-report.js
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}

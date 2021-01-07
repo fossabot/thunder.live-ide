@@ -12,7 +12,7 @@ module.exports = {
     }
   },
   collectCoverageFrom: ['src/**/*.ts'],
-  coveragePathIgnorePatterns: ['index.ts'],
+  coveragePathIgnorePatterns: ['src/main.ts', 'src/polyfills.ts', 'src/environments/*'],
   coverageReporters: ['html', 'json-summary'],
   coverageThreshold: {
     global: {

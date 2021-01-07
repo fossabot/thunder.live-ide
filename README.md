@@ -5,8 +5,12 @@ Instant dev environment for developers.
 [![License](https://img.shields.io/github/license/rwxrwx-rwx/thunder.live-ide)](https://github.com/rwxrwx-rwx/thunder.live-ide)
 [![Contributors](https://img.shields.io/github/contributors/rwxrwx-rwx/thunder.live-ide)](https://github.com/rwxrwx-rwx/thunder.live-ide)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![build](https://img.shields.io/discord/794493222894305280)](https://discord.com/channels/794493222894305280/794493223414005812)
+[![discord](https://img.shields.io/discord/794493222894305280?logo=discord&logoColor=fff&label=Discord&color=7389d8)](https://discord.com/channels/794493222894305280/794493223414005812)
+
 [![build](https://github.com/rwxrwx-rwx/thunder.live-ide/workflows/build/badge.svg)](https://github.com/rwxrwx-rwx/thunder.live-ide/actions?query=workflow%3Abuild)
+![coverage](https://s3-ap-southeast-1.amazonaws.com/thunder.live-ide/badges/core-ut.svg)
+![coverage](https://s3-ap-southeast-1.amazonaws.com/thunder.live-ide/badges/ui-controls-ut.svg)
+![coverage](https://s3-ap-southeast-1.amazonaws.com/thunder.live-ide/badges/ide-playground-ut.svg)
 
 ## Want to help?
 

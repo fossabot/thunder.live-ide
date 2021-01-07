@@ -52,7 +52,7 @@ jobs:
 
       - name: Report UT coverages
         if: ${{ always() }}
-        run: node .\scripts\ut-report.js
+        run: node ./scripts/ut-report.js
         env:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}

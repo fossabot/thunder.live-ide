@@ -1188,7 +1188,7 @@ Prefer usage of `as const` over literal type
 
 ### [@typescript-eslint/prefer-enum-initializers](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-enum-initializers.md)
 
-[![](https://img.shields.io/badge/-TS%20CODE-lightgrey)](../../../libs/eslint/src/typescript/best-practices/prefer-enum-initializers.ts)
+[![](https://img.shields.io/badge/-TS%20CODE-sucess)](../../../libs/eslint/src/typescript/best-practices/prefer-enum-initializers.ts)
 ![category](https://img.shields.io/badge/category-Best%20Practices-yellowgreen)
 ![type](https://img.shields.io/badge/type-suggestion-blueviolet)
 ![recommended](https://img.shields.io/badge/recommended-false-ff69b4)
@@ -1198,13 +1198,35 @@ Prefer initializing each enums member value
 ![BAD](https://img.shields.io/badge/-BAD-critical)
 
 ```ts
+enum BadExample {
+  FirstValue, // <= Must initializing value
+  SecondValue // <= Must initializing value
+}
+enum BadColor {
+  Green = 'Green',
+  Red // <= Must initializing value
+}
+enum BadDirection {
+  Up, // <= Must initializing value
+  Down = 2
 
 ```
 
 ![GOOD](https://img.shields.io/badge/-GOOD-informational)
 
 ```ts
-
+enum GoodExample {
+  FirstValue = 'FirstValue',
+  SecondValue = 'SecondValue'
+}
+enum GoodColor {
+  Green = 'Green',
+  Red = 'Red'
+}
+enum GoodDirection {
+  Up = 1,
+  Down = 2
+}
 ```
 
 ### [@typescript-eslint/prefer-function-type](https://github.com/typescript-eslint/typescript-eslint/blob/v4.10.0/packages/eslint-plugin/docs/rules/prefer-function-type.md)

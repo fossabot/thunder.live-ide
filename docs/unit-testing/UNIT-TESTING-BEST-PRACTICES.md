@@ -40,7 +40,7 @@ In an all to remember unit test cases should follow the `FIRST` principle:
 
 ## T = Timely
 
-### 1. Unit test cases should be Fast.
+### 1. Unit test cases should be Fast
 
 Fast enough to execute in 10 ms. Yes in every test should run within milliseconds.
 
@@ -54,7 +54,7 @@ Fast enough to execute in 10 ms. Yes in every test should run within millisecond
 
 So this best practice really has a broader meaning which drives all goodies to your code. Do Not Stop here …Here is what will make you think to design better API if you are following `Test Driven Development (TDD)` or even make you think redesign/refactor your existing legacy code.
 
-### 2. Unit test cases should be isolated
+### 2. Unit test cases should be Isolated
 
 > Why? What it really meant? See below,
 
@@ -62,7 +62,7 @@ So this best practice really has a broader meaning which drives all goodies to y
 - If that `API` (Let’s say `A`() )calls any other `API`( let’s say `B`())then you write separate unit tests for that dependency(i.e `B`()). That means you need to mock `B`() within `A`() to make isolation.
 - Each unit test should be stateless and doesn’t depend on other unit tests by any means.
 
-### 3. Unit test cases should be Repeatable.
+### 3. Unit test cases should be Repeatable
 
 > Why? What it really meant? See below,
 
@@ -72,7 +72,7 @@ So this best practice really has a broader meaning which drives all goodies to y
 - That means you get the same result for all reason except when for breaking changes introduced by developers.
 - Unit test cases find breaking changes right ahead of time.
 
-### 4. Unit test cases should be Self Checking.
+### 4. Unit test cases should be Self-checking
 
 > Why? What it really meant? See below,
 
@@ -80,7 +80,7 @@ So this best practice really has a broader meaning which drives all goodies to y
 - Right ahead of time intimation of a new bug introduced in the code by failing Unit test cases
 - Self-checking will work on the local machine or could work on the build server as part of the CI-CD pipeline.
 
-### 5. Unit test cases should be Timely.
+### 5. Unit test cases should be Timely
 
 > Why? What it really meant? See below,
 
@@ -92,9 +92,9 @@ So this best practice really has a broader meaning which drives all goodies to y
 1. That means you need to follow the first principle concept very seriously.
 2. API is not small enough to test all scenarios easily.
 3. Need to design/refactor your API.
-4. That means needs to pitch in hardly negotiating on Design with your manager and hence client..and lastly, do not stop here .. go get the buy-in.
+4. That means you may pitch in hardly negotiating on Design with your manager and hence client..and lastly, do not stop here .. go get the buy-in.
 
-Unit test cases have + ve impact in the long run and do provide a lot of benefits on the maintenance side (shift left) for early identification of bugs and issues.
+Unit test cases have impact in the long run and do provide a lot of benefits on the maintenance side (shift left) for early identification of bugs and issues.
 
 If working on existing code, unit test cases will give you a lot of early signals of coding issues and opportunities for improvements. It’s important to implements all those if possible.
 

@@ -6,6 +6,7 @@ Instant dev environment for developers.
 [![Contributors](https://img.shields.io/github/contributors/rwxrwx-rwx/thunder.live-ide)](https://github.com/rwxrwx-rwx/thunder.live-ide)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![discord](https://img.shields.io/discord/794493222894305280?logo=discord&logoColor=fff&label=Discord&color=7389d8)](https://discord.com/channels/794493222894305280/794493223414005812)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frwxrwx-rwx%2Fthunder.live-ide.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Frwxrwx-rwx%2Fthunder.live-ide?ref=badge_shield)
 
 [![build](https://github.com/rwxrwx-rwx/thunder.live-ide/workflows/build/badge.svg)](https://github.com/rwxrwx-rwx/thunder.live-ide/actions?query=workflow%3Abuild)
 ![coverage](https://s3-ap-southeast-1.amazonaws.com/thunder.live-ide/badges/core-ut.svg)
@@ -106,3 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </td>
   </tr>
 </table>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Frwxrwx-rwx%2Fthunder.live-ide.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Frwxrwx-rwx%2Fthunder.live-ide?ref=badge_large)
